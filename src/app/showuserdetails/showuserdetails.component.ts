@@ -3,6 +3,7 @@ import {User} from '../users';
 import {Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { UserService } from '../user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-showuserdetails',
@@ -12,7 +13,7 @@ import { UserService } from '../user.service';
 export class ShowuserdetailsComponent implements OnInit {
   // @Input() user:User;
 users:number;
-  constructor(private route:ActivatedRoute,private userservice:UserService) { }
+  constructor(private route:ActivatedRoute,private userservice:UserService,private router:Router) { }
 
   // ngOnInit():void {
   //   this.getUser();
@@ -22,6 +23,11 @@ users:number;
 
     let userId=this.route.snapshot.params['id'];
     this.userservice.getDetails(userId).subscribe((Details)=>this.users=Details);
+  }
+  Update(user:string)
+  {
+
+    this.router.navigate(['/home']);
   }
   
   // getUser():void{

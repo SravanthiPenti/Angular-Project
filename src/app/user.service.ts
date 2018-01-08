@@ -11,14 +11,14 @@ export class UserService {
   constructor(private http:Http) { }
   getUsers():Observable<any[]>{
     // return of(USERS);
-    return this.http.get("./assets/userdetails.json").map((response:Response)=><any[]>response.json());
+    return this.http.get("https://jsonplaceholder.typicode.com/users").map((response:Response)=><any[]>response.json());
   }
   // getUser(id:number):Observable<User>{
   // return of(USERS.find(user=>user.id===id));
   // }
   getDetails(id:number)
   {
-return this.http.get("./assets/userdetails.json/"+id).map((response:Response)=><number>response.json());
+return this.http.get("https://jsonplaceholder.typicode.com/users/"+id).map((response:Response)=><number>response.json());
   }
 
 
