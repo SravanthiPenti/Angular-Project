@@ -1,0 +1,10 @@
+<h3>User-Details</h3>
+<div class="row">
+  <a routerLink="details/:name" *ngFor="let user of users" class="col-sm-4">
+    <div>
+      <h4>{{user.name}}</h4>
+    </div>
+  </a>
+</div>
+<!-- <a *ngFor="let user of users" class="col-1-4"
+    routerLink="/user/{{user.id}}"> -->
