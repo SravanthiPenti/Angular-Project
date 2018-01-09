@@ -6,6 +6,7 @@ import { UserComponent } from './user/user.component';
 import { UserService } from './user/user.service';
 import {RouterModule,Routes} from '@angular/router';
 import {DetailsComponent} from './details/details.component';
+import {NewUserComponent} from './NewUser/newuser.component';
 
 export const routes:Routes=[
 {path:'',redirectTo:'/home',pathMatch:'full'},
@@ -19,7 +20,8 @@ export const routes:Routes=[
   declarations: [
     AppComponent,
     UserComponent,
-    DetailsComponent
+    DetailsComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
