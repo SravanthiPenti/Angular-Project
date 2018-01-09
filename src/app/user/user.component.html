@@ -1,3 +1,66 @@
-<p>
-  user works!
-</p>
+<!-- <ul *ngFor="let user of users">
+  <li>{{user.id}}</li>
+  <li>{{user.fullname}}</li>
+  <li>{{user.email}}</li>
+</ul> -->
+<!-- <div class="container">
+  <div class="row"  >
+  <div class="col-sm-4" *ngFor="let user of users" style="background-color:cadetblue">
+    <div>
+{{user.id}}
+{{user.fullname}}
+{{user.email}}
+</div>
+    </div>
+
+  </div>
+
+</div> -->
+
+<div class="container">
+    <button (click)="addUser()" class="btn btn-primary pull-right">Add User</button>
+<table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>ShowDetails</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.fullname}}</td>
+        <td>{{user.email}}</td>
+        <td><a routerLink="/home/{{user.id}}"><button>Show Details</button></a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <!-- <div *ngIf="editForm">
+<div *ngIf="selectedUser">
+  <label>Id:</label><input type="text" [(ngModel)]="selectedUser.id"><br>
+  <label>Name:</label><input type="text" [(ngModel)]="selectedUser.fullname"><br>
+  <label>Email:</label><input type="text" [(ngModel)]="selectedUser.email"><br>
+<button  (click)="onEdit()">save</button>
+  <a routerLink="/home/{{user.id}}">
+</div> -->
+<!-- </div>
+<form *ngIf="newForm">
+  <div>
+  <label>Id:</label>
+  <input type="text" [(ngModel)]="newuser.id" name="id">
+</div>
+<div>
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="newuser.fullname" name="fullname">  
+</div>
+<div>
+  <label>Email:</label>
+  <input type="text" [(ngModel)]="newuser.email" name="email">
+</div>
+  <button class="btn btn-success" (click)="onSave(newuser)">Save</button>
+  <button class="btn btn-warning">cancel</button> 
+</form> -->
