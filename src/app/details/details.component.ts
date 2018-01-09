@@ -17,7 +17,7 @@ export class DetailsComponent{
         this.getUserId();
     }
 getUserId()
-{  const id = +this.route.snapshot.paramMap.get('id');
+{  const id =+this.route.snapshot.paramMap.get('id');
 this._userservice.userId(id)
   .subscribe(user => this.user = user);
 }

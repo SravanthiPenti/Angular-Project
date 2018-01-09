@@ -15,38 +15,8 @@ export class UserComponent implements OnInit {
   {
 
   }
-  // editForm:boolean=false;
-  // newForm:boolean=false;
-  // addUser()
-  // {
-  // this._userservice.getUsers()
-  // }
-  // editUser(user:User)
-  // {
-  //   this.users=user;
-  // }
-  // addUser()
-  // {
-  //   this.newForm=true;
-  // }
-  // onSave(user)
-  // {
-  //   if(this.newForm)
-  //   {
-  //   this._userservice.addUsers(user);
-  //   }
-  //   this.newForm=false;
-  // }
+  
 
-//   userEdit(user:User)
-//   {
-// this.selectedUser=user;
-// this.editForm=true;
-//   }
-//   onEdit()
-//   {
-//     this.editForm=false;
-//   }
 
 ngOnInit()
 {

@@ -7,15 +7,17 @@ import {of} from 'rxjs/observable/of';
 @Injectable()
 export class UserService{
 private users=USERS;
+
     getUsers():Observable<User[]>
     {
         return of(USERS);
     }
-    // addUsers(user:User)
-    // {
-    //     this.users.push(user);
-    //     console.log(this.users);
-    // }
+
+ 
+    addUsers(user:User)
+    {
+        this.users.push(user);
+    }
     userId(id: number): Observable<User>
     {
         
