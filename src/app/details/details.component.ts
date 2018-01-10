@@ -21,13 +21,17 @@ getUserId()
 this._userservice.userId(id)
   .subscribe(user => this.user = user);
 }
+// getUserId()
+// {
+    
+// }
 goBack()
 {
-    this.router.navigate(['/home']);
+ this._userservice.update(this.user).subscribe(()=>this.router.navigate(['/home']));
 }
 onDelete(user:User)
 {
-    this._userservice.deleteUser(user);
+    this._userservice.deleteUser(user).subscribe();
     this.router.navigate(['/home']);
 }
 

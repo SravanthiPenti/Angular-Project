@@ -9,6 +9,7 @@ import {RouterModule,Routes} from '@angular/router';
 import {DetailsComponent} from './details/details.component';
 import {NewUserComponent} from './NewUser/newuser.component';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {UserData} from './userdata';
 
 export const routes:Routes=[
 {path:'',redirectTo:'/home',pathMatch:'full'},
@@ -29,7 +30,8 @@ export const routes:Routes=[
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-HttpClientInMemoryWebApiModule,
+HttpClientInMemoryWebApiModule.forRoot(UserData,{dataEncapsulation:false}),
+
   HttpClientModule
  
   ],
