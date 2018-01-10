@@ -1,7 +1,16 @@
+<div class="container">
+<h3 class="alert alert-danger">User Registration</h3>
 <form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)">
-    Id:<input type="text" ngModel name="id"><br>
-    Name:<input type="text" ngModel name="fullname"><br>
-    Email:<input type="text" ngModel name="email"><br>
-    <button class="btn btn-primary">ADD</button>
-    
+    <div class="form-group">
+        <div>
+   <label> Id:</label><input type="text" ngModel name="id" class="form-control">
+  
+</div>   
+<div> <label>Name:</label><input type="text" ngModel name="fullname" class="form-control">
+</div>
+    <div><label>Email:</label><input type="text" ngModel name="email" class="form-control">
+    </div>
+    <button class="btn btn-success">ADD</button>
+</div>
 </form>
+</div>

@@ -3,7 +3,7 @@ import {UserService} from '../user/user.service';
 import {User} from '../user/user';
 import{Router} from '@angular/router';
 @Component({
-    selector:'newuser',
+
     templateUrl:'./newuser.component.html',
 })
 

@@ -3,7 +3,7 @@ import {UserService} from '../user/user.service';
 import {User} from '../user/user';
 import {ActivatedRoute,Router} from '@angular/router';
 @Component({
-    selector:'details',
+   
     templateUrl:'./details.component.html'
 })
 export class DetailsComponent{

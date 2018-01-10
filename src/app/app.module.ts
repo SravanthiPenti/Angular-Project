@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { UserService } from './user/user.service';
 import {RouterModule,Routes} from '@angular/router';
 import {DetailsComponent} from './details/details.component';
 import {NewUserComponent} from './NewUser/newuser.component';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 
 export const routes:Routes=[
 {path:'',redirectTo:'/home',pathMatch:'full'},
@@ -26,7 +28,9 @@ export const routes:Routes=[
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+HttpClientInMemoryWebApiModule,
+  HttpClientModule
  
   ],
 
