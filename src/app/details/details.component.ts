@@ -29,11 +29,11 @@ goBack()
 {
  this._userservice.update(this.user).subscribe(()=>this.router.navigate(['/home']));
 }
-onDelete(user:User)
-{
-    this._userservice.deleteUser(user).subscribe();
-    this.router.navigate(['/home']);
-}
+// onDelete(user:User)
+// {
+//     this._userservice.deleteUser(user).subscribe();
+//     this.router.navigate(['/home']);
+// }
 
 
 }

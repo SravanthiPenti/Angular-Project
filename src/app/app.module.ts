@@ -11,11 +11,14 @@ import {NewUserComponent} from './NewUser/newuser.component';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {UserData} from './userdata';
 
+import {DeleteComponent} from './user/delete.component';
+
 export const routes:Routes=[
 {path:'',redirectTo:'/home',pathMatch:'full'},
 {path:'home',component:UserComponent},
 {path:'home/:id',component:DetailsComponent},
-{path:'addUser',component:NewUserComponent}
+{path:'addUser',component:NewUserComponent},
+{path:'delete',component:DeleteComponent}
 ]
 
 
@@ -24,7 +27,8 @@ export const routes:Routes=[
     AppComponent,
     UserComponent,
     DetailsComponent,
-    NewUserComponent
+    NewUserComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,

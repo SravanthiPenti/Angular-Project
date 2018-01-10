@@ -18,16 +18,25 @@
 </div> -->
 
 <div class="container">
+   
     <h1 class="alert alert-info">User Details</h1>
-    <a routerLink="/addUser"><button class="btn btn-primary">Add User</button></a>
+    <div *ngIf="deleteUser">
+        Are you sure to delete the User?
+        <button class="btn btn-sm btn-success" (click)="yes()">yes</button>
+        <button class="btn btn-sm btn-danger" (click)="no()">no</button>
+      </div>
+      
+
+    <p align="right"><button class="btn btn-primary" (click)="newUser()"><i class="fa fa-plus"></i></button></p>
     <br>
+    
 <table class="table">
     <thead>
       <tr>
         <th>Firstname</th>
         <th>Lastname</th>
         <th>Email</th>
-        <th>ShowDetails</th>
+       
       </tr>
     </thead>
     
@@ -36,7 +45,10 @@
         <td>{{user.id}}</td>
         <td>{{user.fullname}}</td>
         <td>{{user.email}}</td>
-        <td><a routerLink="/home/{{user.id}}"><button class="btn btn-success">Show Details</button></a></td>
+        <td><a routerLink="/home/{{user.id}}"><button class="btn btn-sm btn-success"><i class="fa fa-edit"></i></button></a>
+      <button (click)="onDelete(user)"  data-target="#deleteuser" data-toggle="modal" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+      
+      
       </tr>
     </tbody>
   </table>
