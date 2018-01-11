@@ -18,73 +18,41 @@
 </div> -->
 
 <div class="container">
-   
-    <h1 class="alert alert-info">User Details</h1>
-    <div *ngIf="deleteUser">
-        Are you sure to delete the User?
-        <button class="btn btn-sm btn-success" (click)="yes()">yes</button>
-        <!-- <button class="btn btn-sm btn-danger" data-dismiss="modal">no</button> -->
-      </div>
-      <!-- <div *ngIf="deleteUser">
-      </div> -->
 
-    <p align="right"><button class="btn btn-primary" (click)="newUser()"><i class="fa fa-plus"></i></button></p>
-    <br>
-    
-<table class="table">
+  <h1 class="alert alert-info">User Details</h1>
+ <p align="right">
+    <button mat-raised-button class="btn btn-primary" (click)="newUser()">adduser</button>
+  </p>
+  <br>
+
+  <table class="table">
     <thead>
       <tr>
         <th>Id</th>
         <th>Name</th>
         <th>Email</th>
-       
+        <th></th>
       </tr>
     </thead>
-    
+
     <tbody>
       <tr *ngFor="let user of users">
         <td>{{user.id}}</td>
         <td>{{user.fullname}}</td>
         <td>{{user.email}}</td>
-        <td><a routerLink="/home/{{user.id}}"><button class="btn btn-sm btn-success"><i class="fa fa-edit"></i></button></a>
-      <button mat-raised-button (click)="onDelete(user)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
-      
-      
+        <td>
+          <a routerLink="/home/{{user.id}}">
+            <button mat-raised-button class="btn btn-sm btn-success">
+              <i class="fa fa-edit"></i>
+            </button>
+          </a>
+          <button mat-raised-button (click)="onDelete(user)" class="btn btn-sm btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+
+
       </tr>
     </tbody>
   </table>
-  </div>
-  <!-- <div *ngIf="editForm">
-<div *ngIf="selectedUser">
-  <label>Id:</label><input type="text" [(ngModel)]="selectedUser.id"><br>
-  <label>Name:</label><input type="text" [(ngModel)]="selectedUser.fullname"><br>
-  <label>Email:</label><input type="text" [(ngModel)]="selectedUser.email"><br>
-<button  (click)="onEdit()">save</button>
-  <a routerLink="/home/{{user.id}}">
-</div> -->
-<!-- </div>
-<form *ngIf="newForm">
-  <div>
-  <label>Id:</label>
-  <input type="text" [(ngModel)]="newuser.id" name="id">
 </div>
-<div>
-  <label>Name:</label>
-  <input type="text" [(ngModel)]="newuser.fullname" name="fullname">  
-</div>
-<div>
-  <label>Email:</label>
-  <input type="text" [(ngModel)]="newuser.email" name="email">
-</div>
-  <button class="btn btn-success" (click)="onSave(newuser)">Save</button>
-  <button class="btn btn-warning">cancel</button> 
-</form> -->
-<!-- <button (click)="getpopup(usermodel)"></button>
-<ng-template #usermodel>
-  <div class="modal-header">
-Hello
-  </div>
-  <div class="modal-body">
-    sadhsjfhehdgf
-  </div>
-</ng-template> -->

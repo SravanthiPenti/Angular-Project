@@ -1,6 +1,4 @@
-.box3 {
-    width: 300px;
 
-    background: white;
-    border: 1px solid #000;
+th {
+    border-top: 0px;
 }
