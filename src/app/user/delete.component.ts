@@ -4,7 +4,7 @@ import {UserService} from './user.service';
 import {User} from './user';
 import {ActivatedRoute} from '@angular/router';
 @Component({
-template:`<h2>Successfully Deleted</h2>
+template:`<p class="alert alert-success">Successfully Deleted</p>
 <button class="btn btn-info" (click)="goHome()">Home</button>
 
 `,

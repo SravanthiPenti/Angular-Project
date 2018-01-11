@@ -23,9 +23,10 @@
     <div *ngIf="deleteUser">
         Are you sure to delete the User?
         <button class="btn btn-sm btn-success" (click)="yes()">yes</button>
-        <button class="btn btn-sm btn-danger" (click)="no()">no</button>
+        <!-- <button class="btn btn-sm btn-danger" data-dismiss="modal">no</button> -->
       </div>
-      
+      <!-- <div *ngIf="deleteUser">
+      </div> -->
 
     <p align="right"><button class="btn btn-primary" (click)="newUser()"><i class="fa fa-plus"></i></button></p>
     <br>
@@ -33,8 +34,8 @@
 <table class="table">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
+        <th>Id</th>
+        <th>Name</th>
         <th>Email</th>
        
       </tr>
@@ -46,7 +47,7 @@
         <td>{{user.fullname}}</td>
         <td>{{user.email}}</td>
         <td><a routerLink="/home/{{user.id}}"><button class="btn btn-sm btn-success"><i class="fa fa-edit"></i></button></a>
-      <button (click)="onDelete(user)"  data-target="#deleteuser" data-toggle="modal" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+      <button (click)="onDelete(user)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
       
       
       </tr>
@@ -78,3 +79,12 @@
   <button class="btn btn-success" (click)="onSave(newuser)">Save</button>
   <button class="btn btn-warning">cancel</button> 
 </form> -->
+<!-- <button (click)="getpopup(usermodel)"></button>
+<ng-template #usermodel>
+  <div class="modal-header">
+Hello
+  </div>
+  <div class="modal-body">
+    sadhsjfhehdgf
+  </div>
+</ng-template> -->

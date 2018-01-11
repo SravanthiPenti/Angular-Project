@@ -38,14 +38,18 @@ yes()
 {
   this.router.navigate(['/delete']);
 }
-no()
-{
-  this.router.navigate(['/home'])
-}
+// no()
+// {
+//   this.router.navigate(['/home'])
+// }
 
 newUser()
 {
   this.router.navigate(['/addUser']);
+}
+popup()
+{
+  this.deleteUser=true;
 }
 
 }
