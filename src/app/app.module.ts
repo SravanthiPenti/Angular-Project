@@ -10,7 +10,7 @@ import {DetailsComponent} from './details/details.component';
 import {NewUserComponent} from './NewUser/newuser.component';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {UserData} from './userdata';
-
+import {MatInputModule,MatButtonModule,MatSelectModule,MatIconModule,MatDialogModule} from '@angular/material';
 import {DeleteComponent} from './user/delete.component';
 
 export const routes:Routes=[
@@ -36,7 +36,12 @@ export const routes:Routes=[
     RouterModule.forRoot(routes),
 HttpClientInMemoryWebApiModule.forRoot(UserData,{dataEncapsulation:false}),
 
-  HttpClientModule
+  HttpClientModule,
+  MatInputModule,
+  MatButtonModule,
+  MatSelectModule,
+  MatIconModule,
+  MatDialogModule
  
   ],
 
