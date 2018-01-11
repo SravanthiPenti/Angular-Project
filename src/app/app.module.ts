@@ -12,13 +12,16 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {UserData} from './userdata';
 import {MatInputModule,MatButtonModule,MatSelectModule,MatIconModule,MatDialogModule} from '@angular/material';
 import {DeleteComponent} from './user/delete.component';
+import {DeleteUserComponent} from './user/user.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DeleteMessageComponent} from './user/user.component';
 
 export const routes:Routes=[
 {path:'',redirectTo:'/home',pathMatch:'full'},
 {path:'home',component:UserComponent},
 {path:'home/:id',component:DetailsComponent},
 {path:'addUser',component:NewUserComponent},
-{path:'delete',component:DeleteComponent}
+{path:'delete',component:UserComponent}
 ]
 
 
@@ -28,7 +31,9 @@ export const routes:Routes=[
     UserComponent,
     DetailsComponent,
     NewUserComponent,
-    DeleteComponent
+    DeleteComponent,
+    DeleteUserComponent,
+    DeleteMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +46,11 @@ HttpClientInMemoryWebApiModule.forRoot(UserData,{dataEncapsulation:false}),
   MatButtonModule,
   MatSelectModule,
   MatIconModule,
-  MatDialogModule
+  MatDialogModule,
+  BrowserAnimationsModule
  
   ],
+  entryComponents:[DeleteUserComponent,UserComponent,DeleteMessageComponent],
 
   bootstrap: [AppComponent],
   providers:[UserService],
