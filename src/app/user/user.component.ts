@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, Inject ,ViewContainerRef } from '@angular/core';
 import { UserService } from './user.service';
 import { User } from './user';
 import { Router } from '@angular/router';
@@ -25,6 +25,7 @@ export class UserComponent implements OnInit {
   getUsers() {
     this._userservice.getUsers().subscribe((users) => this.users = users);
   }
+ 
 
   onDelete(user: User) {
 
@@ -47,7 +48,13 @@ export class UserComponent implements OnInit {
   newUser() {
     this.router.navigate(['/addUser']);
   }
-
+showUser(user:User)
+{
+let dialogRef=this.dialog.open(ShowUserComponent,{
+  width:'500px',
+  data:user
+})
+}
 
 }
 @Component({
@@ -60,6 +67,21 @@ export class DeleteUserComponent {
 
   }
   onNoClick() {
+    this.dialogRef.close();
+  }
+
+
+}
+@Component({
+  templateUrl: 'showuser.component.html',
+})
+export class ShowUserComponent {
+  constructor(public dialogRef: MatDialogRef<ShowUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, private _userservice: UserService) {
+
+
+  }
+  onClick() {
     this.dialogRef.close();
   }
 

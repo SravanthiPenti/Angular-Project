@@ -1,13 +1,19 @@
 <div class="container">
-<h4 class="alert alert-primary">Edit UserDetails</h4>
-User ID:<span>{{user.id}}</span><br><br>
-<!-- <label>Id:</label><input type="text" [(ngModel)]="user.id" class="form-control"><br> -->
-<label>Name:</label><input type="text" [(ngModel)]="user.fullname" class="form-control"><br>
-<label>Email:</label><input type="text" [(ngModel)]="user.email" class="form-control"><br>
-<button (click)="goBack()" class="btn btn-success">Save</button>
-<!-- <button (click)="onDelete(user)" class="btn btn-danger">Delete</button> -->
+    <h4 class="alert alert-primary">Edit UserDetails</h4>
+    User ID:
+    <span>{{user.id}}</span>
+    <br>
+    <br>
+    <!-- <label>Id:</label><input type="text" [(ngModel)]="user.id" class="form-control"><br> -->
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="user.fullname" class="form-control">
+    <br>
+    <label>Email:</label>
+    <input type="text" [(ngModel)]="user.email" class="form-control">
+    <br>
+    <button (click)="goBack()" class="btn btn-success">Save</button>
+    <!-- <button (click)="onDelete(user)" class="btn btn-danger">Delete</button> -->
 
 
 
 </div>
-

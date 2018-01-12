@@ -18,14 +18,17 @@
 </div> -->
 
 <div class="container">
-
-  <h1 class="alert alert-info">User Details</h1>
- <p align="right">
-    <button mat-raised-button class="btn btn-primary" (click)="newUser()">adduser</button>
+  <div style="border-bottom:2px solid gainsboro">
+    <h2 style="color:cornflowerblue">User Details</h2>
+  </div>
+  <br>
+  <p align="right">
+    <button mat-raised-button class="btn btn-sm btn-primary" (click)="newUser()">
+      <i class="fa fa-plus"></i>&nbsp;Adduser</button>
   </p>
   <br>
 
-  <table class="table">
+  <table class="table" *ngIf="users">
     <thead>
       <tr>
         <th>Id</th>
@@ -36,17 +39,17 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let user of users">
+      <tr *ngFor="let user of users" (click)="showUser(user)">
         <td>{{user.id}}</td>
         <td>{{user.fullname}}</td>
         <td>{{user.email}}</td>
         <td>
-          <a routerLink="/home/{{user.id}}">
+          <a routerLink="/home/{{user.id}}" style="text-decoration:none">
             <button mat-raised-button class="btn btn-sm btn-success">
               <i class="fa fa-edit"></i>
             </button>
           </a>
-          <button mat-raised-button (click)="onDelete(user)" class="btn btn-sm btn-danger" >
+          <button mat-raised-button (click)="onDelete(user)" class="btn btn-sm btn-danger">
             <i class="fa fa-trash"></i>
           </button>
         </td>

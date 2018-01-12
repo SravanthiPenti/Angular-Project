@@ -16,7 +16,8 @@ import { DeleteComponent } from './user/delete.component';
 import { DeleteUserComponent } from './user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastOptions } from 'ng2-toastr/src/toast-options';
-
+import { CustomOption } from './toaster/toaster.component';
+import {ShowUserComponent} from './user/user.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -34,6 +35,7 @@ export const routes: Routes = [
     NewUserComponent,
 
     DeleteUserComponent,
+    ShowUserComponent
     // DeleteMessageComponent
   ],
   imports: [
@@ -52,9 +54,10 @@ export const routes: Routes = [
     ToastModule.forRoot(),
 
   ],
-  entryComponents: [DeleteUserComponent, UserComponent],
+  entryComponents: [DeleteUserComponent, UserComponent,ShowUserComponent],
 
   bootstrap: [AppComponent],
-  providers: [UserService],
+  providers: [UserService,
+    {provide: ToastOptions, useClass: CustomOption},],
 })
 export class AppModule { }
