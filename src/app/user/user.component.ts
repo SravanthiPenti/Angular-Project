@@ -2,6 +2,8 @@ import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
 import { UserService } from './user.service';
 import { User } from './user';
 import { Router } from '@angular/router';
+import { ToastsManager,ToastOptions } from 'ng2-toastr/ng2-toastr';
+
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
@@ -12,8 +14,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class UserComponent implements OnInit {
   deleteUser: boolean = false;
   users: User[];
-  constructor(private _userservice: UserService, private router: Router, private dialog: MatDialog) {
-
+  constructor(private _userservice: UserService, private router: Router, private dialog: MatDialog, public _toastr: ToastsManager, public vcf: ViewContainerRef) {
+    this._toastr.setRootViewContainerRef(vcf);
+  
   }
   ngOnInit() {
     this.getUsers();
@@ -33,18 +36,18 @@ export class UserComponent implements OnInit {
     dialogRef.afterClosed().subscribe((response) => {
       console.log(response);
       console.log(this.users);
-      console.log(this.users.indexOf(user))
-
-      this.users.splice((this.users.indexOf(user)), 1);
+      if (response) {
+        console.log(this.users.indexOf(user))
+        this.users.splice((this.users.indexOf(user)), 1);
+        this._toastr.success('<p class="alert alert-success">Successfully deleted!</p>', null, { enableHTML: true});
+      }
     })
   }
 
   newUser() {
     this.router.navigate(['/addUser']);
   }
-  popup() {
-    this.deleteUser = true;
-  }
+
 
 }
 @Component({

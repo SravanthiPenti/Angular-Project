@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { UserService } from './user/user.service';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './details/details.component';
 import { NewUserComponent } from './NewUser/newuser.component';
@@ -15,7 +15,8 @@ import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatDia
 import { DeleteComponent } from './user/delete.component';
 import { DeleteUserComponent } from './user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { DeleteMessageComponent } from './user/user.component';
+import { ToastOptions } from 'ng2-toastr/src/toast-options';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,14 +26,13 @@ export const routes: Routes = [
 
 ]
 
-
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     DetailsComponent,
     NewUserComponent,
-    DeleteComponent,
+
     DeleteUserComponent,
     // DeleteMessageComponent
   ],
