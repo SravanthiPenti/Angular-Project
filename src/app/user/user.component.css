@@ -2,3 +2,36 @@
 th {
     border-top: 0px;
 }
+mat-grid-tile {
+    background: lightblue;
+  }
+ 
+/* .container{
+padding: 0 20%;
+} */
+
+
+[class*='col-'] {
+    float: left;
+
+    padding-bottom: 20px;
+  }
+ 
+  p{
+      position: relative;
+  }
+ 
+  .module {
+    padding: 20px;
+    text-align: center;
+    color: #eee;
+  
+    background-color: #607D8B;
+    border-radius: 2px;
+    height:150px;
+    width:150px;
+  }
+  .ng-contrainer{
+      padding: 0 20%;
+      
+  }

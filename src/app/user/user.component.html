@@ -1,61 +1,75 @@
-<!-- <ul *ngFor="let user of users">
-  <li>{{user.id}}</li>
-  <li>{{user.fullname}}</li>
-  <li>{{user.email}}</li>
-</ul> -->
-<!-- <div class="container">
-  <div class="row"  >
-  <div class="col-sm-4" *ngFor="let user of users" style="background-color:cadetblue">
-    <div>
-{{user.id}}
-{{user.fullname}}
-{{user.email}}
-</div>
-    </div>
-
-  </div>
-
-</div> -->
-
 <div class="container">
   <div style="border-bottom:2px solid gainsboro">
     <h2 style="color:cornflowerblue">User Details</h2>
   </div>
   <br>
-  <p align="right">
-    <button mat-raised-button class="btn btn-sm btn-primary" (click)="newUser()">
+  <p>
+
+    <a><button mat-raised-button  data-tooltip  title="Grid View" (click)="gridView()">
+      <i class="fa fa-bars"></i>Grid</button></a>
+    <button mat-raised-button (click)="ListView()">List</button>
+
+    <button mat-raised-button class="btn btn-sm btn-primary pull-right" (click)="newUser()">
       <i class="fa fa-plus"></i>&nbsp;Adduser</button>
   </p>
   <br>
+  <ng-container *ngIf="listViewShow">
+    <table class="table" *ngIf="users">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
 
-  <table class="table" *ngIf="users">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th></th>
-      </tr>
-    </thead>
+      <tbody>
 
-    <tbody>
-      <tr *ngFor="let user of users" (click)="showUser(user)">
-        <td>{{user.id}}</td>
-        <td>{{user.fullname}}</td>
-        <td>{{user.email}}</td>
-        <td>
-          <a routerLink="/home/{{user.id}}" style="text-decoration:none">
-            <button mat-raised-button class="btn btn-sm btn-success">
-              <i class="fa fa-edit"></i>
+        <tr *ngFor="let user of users">
+          <td (click)="showUser(user)">{{user.id}}</td>
+          <td (click)="showUser(user)">{{user.fullname}}</td>
+          <td (click)="showUser(user)">{{user.email}}</td>
+          <td>
+            <a routerLink="/home/{{user.id}}" style="text-decoration:none">
+              <button mat-raised-button class="btn btn-sm btn-success">
+                <i class="fa fa-edit"></i>
+              </button>
+            </a>
+            <button mat-raised-button (click)="onDelete(user)" class="btn btn-sm btn-danger">
+              <i class="fa fa-trash"></i>
             </button>
-          </a>
-          <button mat-raised-button (click)="onDelete(user)" class="btn btn-sm btn-danger">
+          </td>
+
+
+        </tr>
+
+      </tbody>
+    </table>
+  </ng-container>
+</div>
+<!-- <div class="grid-container center">
+<mat-grid-list cols="4" *ngIf="gridViewShow">
+  <mat-grid-tile *ngFor="let user of users" (click)="gridUser(user)">
+<a routerLink="/home/{{user.id}}" style="text-decoration:none">
+        <button>
+          <i class="fa fa-edit"></i>
+        </button></a>
+        <button (click)="onDelete(user)">
             <i class="fa fa-trash"></i>
           </button>
-        </td>
-
-
-      </tr>
-    </tbody>
-  </table>
+     
+         <div (click)="showUser(user)"> {{user.id}}</div>
+     <div (click)="showUser(user)"> {{user.fullname}}</div>
+   
+    </mat-grid-tile>
+</mat-grid-list>
+</div> -->
+<div class="ng-contrainer" *ngIf="gridViewShow">
+  <div *ngFor="let user of users" class="col-md-3 col-xs-6">
+    <div class="module" (click)="gridUser(user)">
+      <p>{{user.id}}</p>
+      <p>{{user.fullname}}</p>
+    </div>
+  </div>
 </div>
