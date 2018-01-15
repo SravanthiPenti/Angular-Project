@@ -14,9 +14,9 @@
     <label>Email:</label>
     <input type="text" [(ngModel)]="user.email" class="form-control">
     <br>
-    <br>
+   
     <label>Description:</label>
-    <input type="text" [(ngModel)]="user.hobbies" class="form-control">
+    <textarea type="text" [(ngModel)]="user.hobbies" class="form-control">{{user.hobbies}}</textarea>
     <br>
     <button (click)="onEditSave()" class="btn btn-info pull-right" >Save</button>
    
