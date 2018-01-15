@@ -38,12 +38,7 @@ export class UserComponent implements OnInit {
   getUsers() {
     this._userservice.getUsers().subscribe((users) => this.users = users);
   }
-  gridUser(user: User) {
-    let dialogRef = this.dialog.open(ShowUserComponent, {
-      width: '500px',
-      data: user
-    })
-  }
+
 
 
   onDelete(user: User) {

@@ -5,11 +5,11 @@
   <br>
   <p>
 
-    <a><button mat-raised-button  data-tooltip  title="Grid View" (click)="gridView()">
-      <i class="fa fa-bars"></i>Grid</button></a>
-    <button mat-raised-button (click)="ListView()">List</button>
+    <a><button data-tooltip  title="Grid View" class="btn btn-sm btn-primary" (click)="gridView()">
+      <i class="fa  fa-th"></i>&nbsp;&nbsp;Grid</button></a>
+    <button  data-tooltip  title="List View" class="btn btn-sm btn-primary" (click)="ListView()"><i class="fa fa-bars"></i>&nbsp;&nbsp;List</button>
 
-    <button mat-raised-button class="btn btn-sm btn-primary pull-right" (click)="newUser()">
+    <button  class="btn btn-sm btn-primary pull-right" (click)="newUser()">
       <i class="fa fa-plus"></i>&nbsp;Adduser</button>
   </p>
   <br>
@@ -67,9 +67,19 @@
 </div> -->
 <div class="ng-contrainer" *ngIf="gridViewShow">
   <div *ngFor="let user of users" class="col-md-3 col-xs-6">
-    <div class="module" (click)="gridUser(user)">
-      <p>{{user.id}}</p>
-      <p>{{user.fullname}}</p>
+    <div class="module" >
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<a routerLink="/home/{{user.id}}" style="text-decoration:none">
+          <button >
+            <i class="fa fa-edit"></i>
+          </button>
+        </a>
+        <button  (click)="onDelete(user)">
+            <i class="fa fa-trash"></i>
+          </button>
+     
+
+      <p (click)="showUser(user)">{{user.id}}</p>
+      <p (click)="showUser(user)">{{user.fullname}}</p>
     </div>
   </div>
 </div>
