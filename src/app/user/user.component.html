@@ -48,23 +48,7 @@
     </table>
   </ng-container>
 </div>
-<!-- <div class="grid-container center">
-<mat-grid-list cols="4" *ngIf="gridViewShow">
-  <mat-grid-tile *ngFor="let user of users" (click)="gridUser(user)">
-<a routerLink="/home/{{user.id}}" style="text-decoration:none">
-        <button>
-          <i class="fa fa-edit"></i>
-        </button></a>
-        <button (click)="onDelete(user)">
-            <i class="fa fa-trash"></i>
-          </button>
-     
-         <div (click)="showUser(user)"> {{user.id}}</div>
-     <div (click)="showUser(user)"> {{user.fullname}}</div>
-   
-    </mat-grid-tile>
-</mat-grid-list>
-</div> -->
+
 <div class="ng-contrainer" *ngIf="gridViewShow">
   <div *ngFor="let user of users" class="col-md-3 col-xs-6">
     <div class="module" >

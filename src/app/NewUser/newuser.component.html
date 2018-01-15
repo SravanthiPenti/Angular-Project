@@ -3,10 +3,7 @@
     <br>
     <form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)">
         <div class="form-group">
-            <!-- <div>
-   <!-- <label> Id:</label><input type="text" ngModel name="id" class="form-control"> -->
-            <!--   
-</div>    -->
+
             <div>
                 <label>Name:</label>
                 <input type="text" ngModel name="fullname" class="form-control">
@@ -21,6 +18,7 @@
                 </div>
             <br>
             <button class="btn btn-sm btn-success" mat-raised-button>Add</button>
+            <button class="btn btn-sm btn-info" (click)="goBack()" mat-raised-button>home</button>
         </div>
     </form>
 </div>

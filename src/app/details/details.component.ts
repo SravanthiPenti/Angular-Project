@@ -25,9 +25,13 @@ this._userservice.userId(id)
 // {
     
 // }
-goBack()
+onEditSave()
 {
  this._userservice.update(this.user).subscribe(()=>this.router.navigate(['/home']));
+}
+goBack()
+{
+    this.router.navigate(['/home']);
 }
 // onDelete(user:User)
 // {

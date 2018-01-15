@@ -16,7 +16,7 @@ import { DeleteComponent } from './user/delete.component';
 import { DeleteUserComponent } from './user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastOptions } from 'ng2-toastr/src/toast-options';
-import { CustomOption } from './toaster/toaster.component';
+
 import {ShowUserComponent} from './user/user.component';
 
 export const routes: Routes = [
@@ -58,7 +58,6 @@ export const routes: Routes = [
   entryComponents: [DeleteUserComponent, UserComponent,ShowUserComponent],
 
   bootstrap: [AppComponent],
-  providers: [UserService,
-    {provide: ToastOptions, useClass: CustomOption},],
+  providers: [UserService],
 })
 export class AppModule { }

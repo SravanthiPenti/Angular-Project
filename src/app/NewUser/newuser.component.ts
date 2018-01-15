@@ -14,17 +14,16 @@ export class NewUserComponent{
 
     }
     user:User[];
-    // onSubmit(user:User)
-    // {
-    //     console.log(user);
-    //     this._userservice.addUsers(user);
-    //     this.router.navigate(['/home']);
-    // }
+
     onSubmit(newuser:User){
         this._userservice.addUser(newuser).subscribe((user)=>{
             this.user.push(user)})
             this.router.navigate(['/home']);
         
+    }
+    goBack()
+    {
+        this.router.navigate(['/home']);
     }
 
 }
