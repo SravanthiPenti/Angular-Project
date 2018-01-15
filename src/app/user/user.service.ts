@@ -29,34 +29,12 @@ export class UserService {
     addUser(user: User): Observable<any> {
         return this.http.post(this.usersUrl, user, httpOptions);
     }
-    // addUsers(user:User)
-    // {
-    //     this.users.push(user);
-    // }
-    // userId(id: number): Observable<User>
-    // {
 
-
-    //         return of(USERS.find(user => user.id === id));
-
-    // }
-    // deleteUser(user:User)
-    // {
-    //     this.users.splice((this.users.indexOf(user)),1);
-    // }
     deleteUser(user: User): Observable<User> {
         const id = user.id;
         const url = `${this.usersUrl}/${id}`;
         return this.http.delete<User>(url, httpOptions);
 
 
-    }
-    searchUsers(term:string):Observable<User[]>
-    {
-        if(!term.trim())
-        {
-            return of([]);
-        }
-        return this.http.get<User[]>(`api/users/?fullname=${term}`);
     }
 }

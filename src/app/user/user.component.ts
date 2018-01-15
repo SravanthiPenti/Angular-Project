@@ -10,8 +10,20 @@ import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
 
+// import { Pipe, PipeTransform } from '@angular/core';
+
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+// @Pipe({ name: 'customSearch' })
+// export class CustomSearchPipe implements PipeTransform {
+//   transform(users: User[]) {
+//     return users.filter(user => {
+//       return user.index
+//     });
+//   }
+// }
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -24,6 +36,7 @@ export class UserComponent implements OnInit {
   listViewShow: boolean = true;
   users$: Observable<User[]>;
   private searchTerms = new Subject<string>();
+  searchTerm: string;
 
 
   gridView() {
@@ -38,9 +51,14 @@ export class UserComponent implements OnInit {
     this._toastr.setRootViewContainerRef(vcf);
 
   }
-  search(term: string): void {
-    this.searchTerms.next(term);
-  }
+  // search(term: string): void {
+  //   this.searchTerms.next(term);
+  //   console.log(this.searchTerm)
+  // }
+  public search:any = '';
+
+
+
   ngOnInit() {
     this.getUsers();
     this.users$ = this.searchTerms.pipe(

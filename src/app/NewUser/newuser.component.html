@@ -1,7 +1,7 @@
 <div class="container">
     <h3 style="color:brown">User Registration</h3>
     <br>
-    <form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)">
+    <form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)" style="width:500px">
         <div class="form-group">
 
             <div>
@@ -10,7 +10,7 @@
             </div>
             <div>
                 <label>Email:</label>
-                <input type="text" ngModel name="email" class="form-control" placeholder="example@email.com">
+                <input type="text" ngModel name="email" class="form-control" placeholder="example@gmail.com">
             </div>
             <div>
                     <label>Description:</label>
@@ -18,7 +18,7 @@
                 </div>
             <br>
             <button class="btn btn-sm btn-success" mat-raised-button>Add</button>
-            <button class="btn btn-sm btn-info" (click)="goBack()" mat-raised-button>home</button>
+            <button class="btn btn-sm btn-info" (click)="goBack()" mat-raised-button>Back</button>
         </div>
     </form>
 </div>

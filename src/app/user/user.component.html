@@ -1,89 +1,73 @@
 <div class="container">
-  <div style="border-bottom:2px solid gainsboro">
-    <h2 style="color:brown">User Details</h2>
-  </div>
-  <br>
-  <span>
+	<div style="border-bottom:2px solid gainsboro">
+		<h2 style="color:brown">User Details</h2>
+	</div>
+	<br>
+	<span>
 
-    <a>
-      <button data-tooltip title="Grid View" class="btn btn-sm btn-info" (click)="gridView()">
-        <i class="fa  fa-th"></i>&nbsp;&nbsp;Grid</button>
-    </a>
-    <button data-tooltip title="List View" class="btn btn-sm btn-info" (click)="ListView()">
-      <i class="fa fa-bars"></i>&nbsp;&nbsp;List</button>
+		<a>
+			<button data-tooltip title="Grid View" class="btn btn-sm btn-info" (click)="gridView()">
+				<i class="fa  fa-th"></i>
+			</button>
+		</a>
+		<button data-tooltip title="List View" class="btn btn-sm btn-info" (click)="ListView()">
+			<i class="fa fa-bars"></i>
+		</button>
 
-    <button class="btn btn-sm btn-info pull-right" (click)="newUser()">
-      <i class="fa fa-plus"></i>&nbsp;Adduser</button>
-      <br><br>
-      <div id="search-component">
+		<button class="btn btn-sm btn-info pull-right" (click)="newUser()">
+			<i class="fa fa-plus"></i>&nbsp;Adduser</button>
+		<br>
+		<br>
 
-  
-          <input #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="Search..." />
-        
-          <ul class="search-result">
-            <li *ngFor="let user of users$ | async" >
-              <a routerLink="/home/{{user.id}}">
-                {{user.fullname}}
-              </a>
-            </li>
-          </ul>
-        </div>
-  </span>
+	</span>
+	<br>
+	<input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="query" id="listSearch" style="width:200px">
+	<br>
+	<ng-container *ngIf="listViewShow">
+		<table class="table" *ngIf="users">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th></th>
+				</tr>
+			</thead>
 
-  
-  <br>
-  <ng-container *ngIf="listViewShow">
-    <table class="table" *ngIf="users">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr *ngFor="let user of users">
-          <td (click)="showUser(user)">{{user.id}}</td>
-          <td (click)="showUser(user)">{{user.fullname}}</td>
-          <td (click)="showUser(user)">{{user.email}}</td>
-          <td>
-            <a routerLink="/home/{{user.id}}" style="text-decoration:none">
-              <button mat-raised-button class="btn btn-sm btn-success">
-                <i class="fa fa-edit"></i>
-              </button>
-            </a>
-            <button mat-raised-button (click)="onDelete(user)" class="btn btn-sm btn-danger">
-              <i class="fa fa-trash"></i>
-            </button>
-          </td>
-
-
-        </tr>
-
-      </tbody>
-    </table>
-  </ng-container>
+			<tbody>
+				<tr *ngFor="let user of users |  LockFilter: query">
+					<td (click)="showUser(user)">{{user.id}}</td>
+					<td (click)="showUser(user)">{{user.fullname}}</td>
+					<td (click)="showUser(user)">{{user.email}}</td>
+					<td>
+						<a routerLink="/home/{{user.id}}" style="text-decoration:none">
+							<button mat-raised-button class="btn btn-sm btn-success">
+								<i class="fa fa-edit"></i>
+							</button>
+						</a>
+						<button mat-raised-button (click)="onDelete(user)" class="btn btn-sm btn-danger">
+							<i class="fa fa-trash"></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</ng-container>
 </div>
 
 <div class="ng-contrainer" *ngIf="gridViewShow">
-  <div *ngFor="let user of users" class="col-md-3 col-xs-6">
-    <div class="module">
-      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-      <a routerLink="/home/{{user.id}}" style="text-decoration:none">
-        <button>
-          <i class="fa fa-edit"></i>
-        </button>
-      </a>
-      <button (click)="onDelete(user)">
-        <i class="fa fa-trash"></i>
-      </button>
-
-
-      <p (click)="showUser(user)">{{user.id}}</p>
-      <p (click)="showUser(user)">{{user.fullname}}</p>
-    </div>
-  </div>
+	<div *ngFor="let user of users | LockFilter: query" class="col-md-3 col-xs-6">
+		<div class="module">
+			&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+			<a routerLink="/home/{{user.id}}" style="text-decoration:none">
+				<button>
+					<i class="fa fa-edit"></i>
+				</button>
+			</a>
+			<button (click)="onDelete(user)">
+				<i class="fa fa-trash"></i>
+			</button>
+			<p (click)="showUser(user)">{{user.fullname}}</p>
+		</div>
+	</div>
 </div>

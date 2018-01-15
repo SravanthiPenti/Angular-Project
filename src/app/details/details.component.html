@@ -1,10 +1,13 @@
 <div class="container">
-    <h4 class="alert alert-primary">Edit UserDetails</h4>
+    <h4 style="color:brown">Edit UserDetails</h4>
     User ID:
     <span>{{user.id}}</span>
     <br>
     <br>
-
+    <button (click)="goBack()" class="btn btn-danger">Back</button>
+    <br>
+    <br>
+    <div style="width:500px">
     <label>Name:</label>
     <input type="text" [(ngModel)]="user.fullname" class="form-control">
     <br>
@@ -15,9 +18,9 @@
     <label>Description:</label>
     <input type="text" [(ngModel)]="user.hobbies" class="form-control">
     <br>
-    <button (click)="onEditSave()" class="btn btn-info">Save</button>
-    <button (click)="goBack()" class="btn btn-danger">Home</button>
+    <button (click)="onEditSave()" class="btn btn-info pull-right" >Save</button>
+   
 
-
+</div>
 
 </div>

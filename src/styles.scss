@@ -20,29 +20,32 @@ body {
 h1, h2, h3, h4 {
     font-weight: normal;
 }
+.ng1-container{
+  float: right;
+}
 [data-tooltip] {
-    &:hover {
-      &:before, &:after {
-        display:block;
-        position:absolute;
-        font-size:0.8em;
-        color:white;
-      }
-      &:before {
-        border-radius:0.2em;
-        content:attr(title);
-        background-color: black;
-        margin-top:-1.5em;
-        padding:0.2em;
-      }
-      &:after {
-        content:'';
-        margin-top:-1.1em;
-        margin-left:1em;
-        border-style:solid;
-        border-color:transparent;
-        background-color: black;
-        border-width:0.5em 0.5em 0 0.5em;
-      }
+  &:hover {
+    &:before, &:after {
+      display:block;
+      position:absolute;
+      font-size:0.8em;
+      color:white;
+    }
+    &:before {
+      border-radius:0.2em;
+      content:attr(title);
+     
+      margin-top:-2.5em;
+      padding:0.3em;
+    }
+    &:after {
+      content:'';
+      margin-top:-2.1em;
+      margin-left:1em;
+      border-style:solid;
+      border-color:transparent;
+    
+      border-width:0.5em 0.5em 0 0.5em;
     }
   }
+}

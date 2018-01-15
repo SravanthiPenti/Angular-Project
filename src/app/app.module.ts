@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastOptions } from 'ng2-toastr/src/toast-options';
 
 import {ShowUserComponent} from './user/user.component';
+import {SearchPipe} from './search/search.pipe';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,8 +36,9 @@ export const routes: Routes = [
     NewUserComponent,
 
     DeleteUserComponent,
-    ShowUserComponent
+    ShowUserComponent,
     // DeleteMessageComponent
+    SearchPipe
   ],
   imports: [
     BrowserModule,
