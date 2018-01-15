@@ -51,4 +51,12 @@ export class UserService {
 
 
     }
+    searchUsers(term:string):Observable<User[]>
+    {
+        if(!term.trim())
+        {
+            return of([]);
+        }
+        return this.http.get<User[]>(`api/users/?fullname=${term}`);
+    }
 }

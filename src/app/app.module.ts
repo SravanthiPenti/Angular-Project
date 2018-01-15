@@ -12,7 +12,7 @@ import { NewUserComponent } from './NewUser/newuser.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { UserData } from './userdata';
 import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatDialogModule,MatGridListModule } from '@angular/material';
-import { DeleteComponent } from './user/delete.component';
+
 import { DeleteUserComponent } from './user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastOptions } from 'ng2-toastr/src/toast-options';

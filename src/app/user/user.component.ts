@@ -3,6 +3,12 @@ import { UserService } from './user.service';
 import { User } from './user';
 import { Router } from '@angular/router';
 import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { of } from 'rxjs/observable/of';
+import {
+  debounceTime, distinctUntilChanged, switchMap
+} from 'rxjs/operators';
 
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -14,25 +20,39 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class UserComponent implements OnInit {
   deleteUser: boolean = false;
   users: User[];
-  gridViewShow:boolean=false;
-  listViewShow:boolean=true;
-  gridView()
-  {
-    this.gridViewShow=true;
-    this.listViewShow=false;
+  gridViewShow: boolean = false;
+  listViewShow: boolean = true;
+  users$: Observable<User[]>;
+  private searchTerms = new Subject<string>();
+
+
+  gridView() {
+    this.gridViewShow = true;
+    this.listViewShow = false;
   }
-  ListView()
-  {
-    this.gridViewShow=false;
-    this.listViewShow=true;
+  ListView() {
+    this.gridViewShow = false;
+    this.listViewShow = true;
   }
   constructor(private _userservice: UserService, private router: Router, private dialog: MatDialog, public _toastr: ToastsManager, public vcf: ViewContainerRef) {
     this._toastr.setRootViewContainerRef(vcf);
 
   }
-
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
   ngOnInit() {
     this.getUsers();
+    this.users$ = this.searchTerms.pipe(
+
+      debounceTime(300),
+
+
+      distinctUntilChanged(),
+
+
+      switchMap((term: string) => this._userservice.searchUsers(term)),
+    );
 
   }
   getUsers() {
@@ -69,12 +89,13 @@ export class UserComponent implements OnInit {
     })
   }
 
+
 }
 
 
 
 @Component({
-  templateUrl: 'deleteuser.component.html',
+  templateUrl: './delete/deleteuser.component.html',
 })
 export class DeleteUserComponent {
   constructor(public dialogRef: MatDialogRef<DeleteUserComponent>,
@@ -89,7 +110,7 @@ export class DeleteUserComponent {
 
 }
 @Component({
-  templateUrl: 'showuser.component.html',
+  templateUrl: './showpopup/showuser.component.html',
 })
 export class ShowUserComponent {
   constructor(public dialogRef: MatDialogRef<ShowUserComponent>,

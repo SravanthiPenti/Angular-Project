@@ -1,17 +1,36 @@
 <div class="container">
   <div style="border-bottom:2px solid gainsboro">
-    <h2 style="color:cornflowerblue">User Details</h2>
+    <h2 style="color:brown">User Details</h2>
   </div>
   <br>
-  <p>
+  <span>
 
-    <a><button data-tooltip  title="Grid View" class="btn btn-sm btn-primary" (click)="gridView()">
-      <i class="fa  fa-th"></i>&nbsp;&nbsp;Grid</button></a>
-    <button  data-tooltip  title="List View" class="btn btn-sm btn-primary" (click)="ListView()"><i class="fa fa-bars"></i>&nbsp;&nbsp;List</button>
+    <a>
+      <button data-tooltip title="Grid View" class="btn btn-sm btn-info" (click)="gridView()">
+        <i class="fa  fa-th"></i>&nbsp;&nbsp;Grid</button>
+    </a>
+    <button data-tooltip title="List View" class="btn btn-sm btn-info" (click)="ListView()">
+      <i class="fa fa-bars"></i>&nbsp;&nbsp;List</button>
 
-    <button  class="btn btn-sm btn-primary pull-right" (click)="newUser()">
+    <button class="btn btn-sm btn-info pull-right" (click)="newUser()">
       <i class="fa fa-plus"></i>&nbsp;Adduser</button>
-  </p>
+      <br><br>
+      <div id="search-component">
+
+  
+          <input #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="Search..." />
+        
+          <ul class="search-result">
+            <li *ngFor="let user of users$ | async" >
+              <a routerLink="/home/{{user.id}}">
+                {{user.fullname}}
+              </a>
+            </li>
+          </ul>
+        </div>
+  </span>
+
+  
   <br>
   <ng-container *ngIf="listViewShow">
     <table class="table" *ngIf="users">
@@ -51,16 +70,17 @@
 
 <div class="ng-contrainer" *ngIf="gridViewShow">
   <div *ngFor="let user of users" class="col-md-3 col-xs-6">
-    <div class="module" >
-        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<a routerLink="/home/{{user.id}}" style="text-decoration:none">
-          <button >
-            <i class="fa fa-edit"></i>
-          </button>
-        </a>
-        <button  (click)="onDelete(user)">
-            <i class="fa fa-trash"></i>
-          </button>
-     
+    <div class="module">
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+      <a routerLink="/home/{{user.id}}" style="text-decoration:none">
+        <button>
+          <i class="fa fa-edit"></i>
+        </button>
+      </a>
+      <button (click)="onDelete(user)">
+        <i class="fa fa-trash"></i>
+      </button>
+
 
       <p (click)="showUser(user)">{{user.id}}</p>
       <p (click)="showUser(user)">{{user.fullname}}</p>
