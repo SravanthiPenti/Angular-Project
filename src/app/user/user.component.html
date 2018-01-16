@@ -1,82 +1,74 @@
 <div class="container">
-	<div style="border-bottom:2px solid gainsboro">
-		<h2 style="color:brown">User Details</h2>
-	</div>
-	<br>
-	<span>
+  <div style="border-bottom:2px solid gainsboro">
+    <h2 style="color:brown">User Details</h2>
+  </div>
+  <br>
+  <span>
+    <a>
+      <button data-tooltip title="Grid View" class="btn btn-sm btn-info" (click)="gridView()">
+        <i class="fa  fa-th"></i>
+      </button>
+    </a>
+    <button data-tooltip title="List View" class="btn btn-sm btn-info" (click)="ListView()">
+      <i class="fa fa-bars"></i>
+    </button>
+    <button class="btn btn-sm btn-primary pull-right" (click)="newUser()">
+      <i class="fa fa-plus"></i>&nbsp;Add User</button>
+    <br>
+    <br>
+  </span>
+  <br>
+  <input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="query" id="listSearch" style="width:200px">
+  <br>
+  <ng-container *ngIf="listViewShow">
+    <table class="table" *ngIf="users">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th (click)="sortByName()">Name
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users |  LockFilter: query">
+          <td (click)="showUser(user)">{{user.id}}</td>
+          <td (click)="showUser(user)">{{user.fullname}}</td>
+          <td (click)="showUser(user)">{{user.email}}</td>
+          <td>
+            <a routerLink="/home/{{user.id}}" style="text-decoration:none">
+              <button class="btn btn-sm btn-default">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </a>
+            <button (click)="onDelete(user)" class="btn btn-sm btn-default">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
 
-		<a>
-			<button data-tooltip title="Grid View" class="btn btn-sm btn-info" (click)="gridView()">
-				<i class="fa  fa-th"></i>
-			</button>
-		</a>
-		<button data-tooltip title="List View" class="btn btn-sm btn-info" (click)="ListView()">
-			<i class="fa fa-bars"></i>
-		</button>
-
-		<button class="btn btn-sm btn-primary pull-right" (click)="newUser()">
-			<i class="fa fa-plus"></i>&nbsp;Add User</button>
-		<br>
-		<br>
-
-	</span>
-	<br>
-	<input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="query" id="listSearch" style="width:200px">
-	<br>
-	<ng-container *ngIf="listViewShow">
-		<table class="table" *ngIf="users">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th (click)="sortByName()">Name
-						<i class="fa fa-sort" aria-hidden="true"></i>
-					</th>
-					<th>Email</th>
-					<th></th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr *ngFor="let user of users |  LockFilter: query">
-					<td (click)="showUser(user)">{{user.id}}</td>
-					<td (click)="showUser(user)">{{user.fullname}}</td>
-					<td (click)="showUser(user)">{{user.email}}</td>
-					<td>
-						<a routerLink="/home/{{user.id}}" style="text-decoration:none">
-							<button class="btn btn-sm btn-default">
-								<mat-icon>edit</mat-icon>
-							</button>
-						</a>
-						<button (click)="onDelete(user)" class="btn btn-sm btn-default">
-							<mat-icon>delete</mat-icon>
-						</button>
-					</td>
-				</tr>
-
-			</tbody>
-		</table>
-
-	</ng-container>
-
-	<section *ngIf="gridViewShow">
-		<div class="row">
-			<div class="col-md-3 col-sm-4" *ngFor="let user of users | LockFilter: query">
-				<div class="module">
-
-					<a routerLink="/home/{{user.id}}" style="text-decoration:none">
-						<button class="pull-right">
-							<i class="fa fa-edit"></i>
-						</button>
-					</a>
-					<button (click)="onDelete(user)" class="pull-right">
-						<i class="fa fa-trash"></i>
-					</button>
-					<br>
-					<br>
-					<p (click)="showUser(user)">{{user.fullname}}</p>
-				</div>
-			</div>
-		</div>
-
-	</section>
+      </tbody>
+    </table>
+  </ng-container>
+  <section *ngIf="gridViewShow">
+    <div class="row">
+      <div class="col-md-3 col-sm-4" *ngFor="let user of users | LockFilter: query">
+        <div class="module">
+          <a routerLink="/home/{{user.id}}" style="text-decoration:none">
+            <button class="pull-right">
+              <i class="fa fa-edit"></i>
+            </button>
+          </a>
+          <button (click)="onDelete(user)" class="pull-right">
+            <i class="fa fa-trash"></i>
+          </button>
+          <br>
+          <br>
+          <p (click)="showUser(user)">{{user.fullname}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

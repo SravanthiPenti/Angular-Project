@@ -3,17 +3,11 @@ th {
     border-top: 0px;
 }
 
- 
-
-
 [class*='col-'] {
     padding-bottom: 20px;
     margin:20px;
   }
- 
- 
- 
-  .module {
+ .module {
    
     text-align: center;
     color: #eee;
