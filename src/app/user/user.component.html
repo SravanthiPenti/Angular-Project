@@ -14,8 +14,8 @@
 			<i class="fa fa-bars"></i>
 		</button>
 
-		<button class="btn btn-sm btn-info pull-right" (click)="newUser()">
-			<i class="fa fa-plus"></i>&nbsp;Adduser</button>
+		<button class="btn btn-sm btn-primary pull-right" (click)="newUser()">
+			<i class="fa fa-plus"></i>&nbsp;Add User</button>
 		<br>
 		<br>
 
@@ -28,7 +28,9 @@
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>Name</th>
+					<th (click)="sortByName()">Name
+					<i class="fa fa-sort" aria-hidden="true"></i>
+					</th>
 					<th>Email</th>
 					<th></th>
 				</tr>
@@ -41,33 +43,40 @@
 					<td (click)="showUser(user)">{{user.email}}</td>
 					<td>
 						<a routerLink="/home/{{user.id}}" style="text-decoration:none">
-							<button mat-raised-button class="btn btn-sm btn-success">
-								<i class="fa fa-edit"></i>
+							<button class="btn btn-sm btn-default">
+								<mat-icon>edit</mat-icon>
 							</button>
 						</a>
-						<button mat-raised-button (click)="onDelete(user)" class="btn btn-sm btn-danger">
-							<i class="fa fa-trash"></i>
+						<button (click)="onDelete(user)" class="btn btn-sm btn-default">
+							<mat-icon>delete</mat-icon>
 						</button>
 					</td>
 				</tr>
+
 			</tbody>
 		</table>
-	</ng-container>
-</div>
 
-<div class="ng-contrainer" *ngIf="gridViewShow">
-	<div *ngFor="let user of users | LockFilter: query" class="col-md-3 col-xs-6">
-		<div class="module">
-			&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-			<a routerLink="/home/{{user.id}}" style="text-decoration:none">
-				<button>
-					<i class="fa fa-edit"></i>
-				</button>
-			</a>
-			<button (click)="onDelete(user)">
-				<i class="fa fa-trash"></i>
-			</button>
-			<p (click)="showUser(user)">{{user.fullname}}</p>
+	</ng-container>
+
+	<section *ngIf="gridViewShow">
+		<div class="row">
+			<div class="col-md-3 col-sm-4" *ngFor="let user of users | LockFilter: query">
+				<div class="module">
+
+					<a routerLink="/home/{{user.id}}" style="text-decoration:none">
+						<button class="pull-right">
+							<i class="fa fa-edit"></i>
+						</button>
+					</a>
+					<button (click)="onDelete(user)" class="pull-right">
+						<i class="fa fa-trash"></i>
+					</button>
+					<br>
+					<br>
+					<p (click)="showUser(user)">{{user.fullname}}</p>
+				</div>
+			</div>
 		</div>
-	</div>
+
+	</section>
 </div>

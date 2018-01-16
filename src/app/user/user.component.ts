@@ -9,20 +9,12 @@ import { of } from 'rxjs/observable/of';
 import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
+import * as _ from 'lodash';
 
-// import { Pipe, PipeTransform } from '@angular/core';
 
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-// @Pipe({ name: 'customSearch' })
-// export class CustomSearchPipe implements PipeTransform {
-//   transform(users: User[]) {
-//     return users.filter(user => {
-//       return user.index
-//     });
-//   }
-// }
 
 @Component({
   selector: 'app-user',
@@ -37,7 +29,17 @@ export class UserComponent implements OnInit {
   users$: Observable<User[]>;
   private searchTerms = new Subject<string>();
   searchTerm: string;
+  sortByNameAsc: boolean;
 
+  sortByName() {
+    if (this.sortByNameAsc) {
+      this.sortByNameAsc = false;
+      this.users = _.reverse(this.users);
+    } else {
+      this.sortByNameAsc = true;
+      this.users = _.sortBy(this.users, ['fullname'])
+    }
+  }
 
   gridView() {
     this.gridViewShow = true;
@@ -51,32 +53,16 @@ export class UserComponent implements OnInit {
     this._toastr.setRootViewContainerRef(vcf);
 
   }
-  // search(term: string): void {
-  //   this.searchTerms.next(term);
-  //   console.log(this.searchTerm)
-  // }
-  public search:any = '';
-
 
 
   ngOnInit() {
     this.getUsers();
-    this.users$ = this.searchTerms.pipe(
 
-      debounceTime(300),
-
-
-      distinctUntilChanged(),
-
-
-      switchMap((term: string) => this._userservice.searchUsers(term)),
-    );
 
   }
   getUsers() {
     this._userservice.getUsers().subscribe((users) => this.users = users);
   }
-
 
 
   onDelete(user: User) {

@@ -13,10 +13,12 @@ export class SearchPipe implements PipeTransform {
         args = args.toLowerCase();
 
         return value.filter(function(item){
-            console.log(item)
-            console.log(value);
+             console.log(item)
+             console.log(value);
             console.log(args);
             return item.fullname.toLowerCase().includes(args);
+             
+            
         });
     }
 }
