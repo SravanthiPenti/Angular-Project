@@ -11,14 +11,14 @@ import { DetailsComponent } from './details/details.component';
 import { NewUserComponent } from './NewUser/newuser.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { UserData } from './userdata';
-import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatDialogModule,MatGridListModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatDialogModule, MatGridListModule } from '@angular/material';
 
 import { DeleteUserComponent } from './user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastOptions } from 'ng2-toastr/src/toast-options';
 
-import {ShowUserComponent} from './user/user.component';
-import {SearchPipe} from './search/search.pipe';
+import { ShowUserComponent } from './user/user.component';
+import { SearchPipe } from './search/search.pipe';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -57,7 +57,7 @@ export const routes: Routes = [
     ToastModule.forRoot(),
 
   ],
-  entryComponents: [DeleteUserComponent, UserComponent,ShowUserComponent],
+  entryComponents: [DeleteUserComponent, UserComponent, ShowUserComponent],
 
   bootstrap: [AppComponent],
   providers: [UserService],
