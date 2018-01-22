@@ -34,7 +34,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users |  LockFilter: query">
-          <td (click)="showUser(user)">{{user.id}}</td>
+          <td (click)="showUser(user)">{{user._id}}</td>
           <td (click)="showUser(user)">{{user.fullname}}</td>
           <td (click)="showUser(user)">{{user.email}}</td>
           <td>

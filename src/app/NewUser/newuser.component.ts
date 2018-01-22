@@ -16,9 +16,11 @@ export class NewUserComponent {
 
 	onSubmit(newuser: User) {
 		this._userservice.addUser(newuser).subscribe((user) => {
-			this.user.push(user)
+			// this.user.push(user)
+			this.router.navigate(['/home']);
+		}, function(error){
+			console.log(error);
 		})
-		this.router.navigate(['/home']);
 
 	}
 	goBack() {

@@ -44,7 +44,7 @@ export const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientInMemoryWebApiModule.forRoot(UserData, { dataEncapsulation: false }),
+    //HttpClientInMemoryWebApiModule.forRoot(UserData, { dataEncapsulation: false }),
 
     HttpClientModule,
     MatInputModule,
