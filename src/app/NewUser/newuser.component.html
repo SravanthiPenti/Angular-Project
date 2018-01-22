@@ -8,17 +8,7 @@
 	<br>
 	<form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)" style="width:500px">
 		<div class="form-group">
-				<div>
-						<label>Id:</label>
-						<input type="text" #idRef="ngModel" ngModel name="id" class="form-control" placeholder="id" required>
-						<div *ngIf="nameRef.errors&&(id.dirty||id.touched)">
-							<div [hidden]="!idRef.errors.required" class="alert alert-danger">
-								plese enter a id
-							</div>
-						</div>
-					</div>
 		
-
 			<div>
 				<label>Name:</label>
 				<input type="text" #nameRef="ngModel" ngModel name="fullname" class="form-control" placeholder="name" required>
