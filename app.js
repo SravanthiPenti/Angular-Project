@@ -39,7 +39,7 @@ global.db = db.db("mongoNode");
 app.post('/adduser',function(req,res){
   // console.log(req.body);
   // res.send(req.body)
-    db.collection('user').save(req.body,function(error,data){
+    db.collection('user').insert(req.body,function(error,data){
     if(error){
       res.send({ status: false});
     }else{
@@ -60,6 +60,19 @@ app.get('/getUser',function(req,res){
 
   console.log(res);
 })
+})
+app.post('/updateUser',function(req,res){
+  var id=req.body.id;
+  db.collection('user').updateOne({'_id':ObjectID(id)},{$set:req.body},function(err,result){
+if(err){
+  res.send({status:false});
+}
+else{
+  res.send(result);
+}
+
+
+  })
 })
 
 
