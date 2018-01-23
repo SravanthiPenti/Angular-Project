@@ -24,6 +24,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: UserComponent },
   { path: 'home/:id', component: DetailsComponent },
+  { path: 'deleteUser/:id', component: DetailsComponent },
   { path: 'addUser', component: NewUserComponent },
 
 ]

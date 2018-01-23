@@ -1,3 +1,5 @@
+
+
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -15,7 +17,7 @@ global.express = require('express')
 global.app = express()
 bodyParser = require('body-parser');
 
-global.ObjectID = require('mongodb').ObjectID;
+global.objectID = require('mongodb').ObjectID;
 app.use(bodyParser.json());
 app.use(allowCrossDomain);
 
@@ -61,9 +63,32 @@ app.get('/getUser',function(req,res){
   console.log(res);
 })
 })
-app.post('/updateUser',function(req,res){
-  var id=req.body.id;
-  db.collection('user').updateOne({'_id':ObjectID(id)},{$set:req.body},function(err,result){
+app.get('/home/:id',function(req,res) {
+
+  // var id=req.body.id;
+
+  // id:req.params.id;
+var id=req.param('id');
+console.log(id);
+  db.collection('user').findOne({'_id':objectID(id)},function(err,result){
+    if(err){
+      res.send({status:false});
+    }
+    else{
+      res.send(result);
+    }
+  })
+  
+})
+app.put('/home/:id',function(req,res){
+  var updatedata={
+fullname:req.body.fullname,
+email:req.body.email,
+hobbies:req.body.hobbies
+  }
+  var id=req.params.id;
+  console.log(id);
+  db.collection('user').updateOne({'_id':objectID(id)},{$set:updatedata},{},function(err,result){
 if(err){
   res.send({status:false});
 }
@@ -71,6 +96,18 @@ else{
   res.send(result);
 }
 
+
+  })
+})
+app.delete('/deleteUser/:id',function(req,res){
+  var id=req.params.id;
+  console.log(id);
+  db.collection('user').deleteOne({'_id': objectID(id)},function(err,result){
+if(err){
+  res.send({status:false});
+}else{
+  res.send(result);
+}
 
   })
 })

@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 // };
 @Injectable()
 export class UserService {
-	private usersUrl = 'api/users';
+	// private usersUrl = 'api/users';
 	constructor(private http: HttpClient) {
 
 	}
@@ -21,12 +21,14 @@ export class UserService {
 	{
     return this.http.get('http://127.0.0.1:3000/getUser').map(response=>response);
 	}
-	userId(id: number): Observable<User> {
-		const url = `${this.usersUrl}/${id}`;
-		return this.http.get<User>(url);
+	userId(id: any): Observable<any> {
+		// const url = `${this.usersUrl}/${id}`;
+		// return this.http.get<User>(url);
+		return this.http.get('http://127.0.0.1:3000/home/'+id).map(response=>response);
 	}
-	update(user: User): Observable<any> {
-		return this.http.put(this.usersUrl, user);
+	update(id,user): Observable<any> {
+		
+		return this.http.put('http://127.0.0.1:3000/home/'+id,user).map(response=>response);
 	}
 	addUser(user): Observable<any> {
 	user.status = true
@@ -35,12 +37,16 @@ export class UserService {
 		  .map(response => response);
 	}
 
-	deleteUser(user: User): Observable<User> {
-		const id = user.id;
-		const url = `${this.usersUrl}/${id}`;
-		return this.http.delete<User>(url);
+	// deleteUser(user: User): Observable<User> {
+	// 	const id = user.id;
+	// 	const url = `${this.usersUrl}/${id}`;
+	// 	return this.http.delete<User>(url);
 
 
+	// }
+	deleteUser(id):Observable<any>{
+		return this.http.delete('http://127.0.0.1:3000/deleteUser/'+id)
+		.map(response=>response);
 	}
 	// addUser(user:User):Observable<any>{
 	// 	return this.http.post(this.usersUrl,user,httpOptions);

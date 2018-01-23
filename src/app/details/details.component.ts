@@ -15,13 +15,16 @@ export class DetailsComponent {
     this.getUserId();
   }
   getUserId() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this._userservice.userId(id)
       .subscribe(user => this.user = user);
   }
 
   onEditSave() {
-    this._userservice.update(this.user).subscribe(() => this.router.navigate(['/home']));
+    const id = this.route.snapshot.paramMap.get('id');
+    this._userservice.update(id,this.user).subscribe((users) =>this.router.navigate(['/home']));
+
+    console.log(this.user);
   }
   goBack() {
     this.router.navigate(['/home']);

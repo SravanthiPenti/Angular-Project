@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
   users: User[];
   gridViewShow: boolean = false;
   listViewShow: boolean = true;
-  users$: Observable<User[]>;
+  // users$: Observable<User[]>;
   private searchTerms = new Subject<string>();
   searchTerm: string;
   sortByNameAsc: boolean;
@@ -58,14 +58,14 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.getUsers();
 
-
   }
   getUsers() {
-    this._userservice.getUsers().subscribe((users) => this.users = users);
+    var thisObj = this;
+    this._userservice.getUsers().subscribe((users) => thisObj.users = users);
   }
 
 
-  onDelete(user: User) {
+  onDelete(user) {
 
     console.log("first");
     let dialogRef = this.dialog.open(DeleteUserComponent, {
@@ -74,10 +74,17 @@ export class UserComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((response) => {
       console.log(response);
-      console.log(this.users);
+      // console.log(this.users);
       if (response) {
-        console.log(this.users.indexOf(user))
-        this.users.splice((this.users.indexOf(user)), 1);
+        // console.log(this.users.indexOf(user))
+        var _thisObj = this;
+        this._userservice.deleteUser(user._id).subscribe((users)=>
+        {
+          console.log(users)
+          _thisObj.users.splice((_thisObj.users.indexOf(user)), 1);
+        }
+     
+      )
         this._toastr.success('<p class="alert alert-success">Successfully deleted!</p>', null, { enableHTML: true });
       }
     })
@@ -103,10 +110,11 @@ export class UserComponent implements OnInit {
 })
 export class DeleteUserComponent {
   constructor(public dialogRef: MatDialogRef<DeleteUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private _userservice: UserService) {
+    @Inject(MAT_DIALOG_DATA) public data: any, private _userservice: UserService,public router:Router) {
 
 
   }
+
   onNoClick() {
     this.dialogRef.close();
   }
