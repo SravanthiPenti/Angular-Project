@@ -18,7 +18,8 @@
     <br>
   </span>
   <br>
-  <input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="query" id="listSearch" style="width:200px">
+  <input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="query" style="width:200px">
+
   <br>
   <ng-container *ngIf="listViewShow">
     <table class="table" *ngIf="users">
@@ -64,7 +65,7 @@
           <button (click)="onDelete(user)" class="pull-right">
             <i class="fa fa-trash"></i>
           </button>
-       
+
           <br>
           <br>
           <p (click)="showUser(user)">{{user.fullname}}</p>

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { UserService } from './user/service/user.service';
+import { UserService } from './service/user.service';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';

@@ -1,21 +1,10 @@
 import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
-import { UserService } from './service/user.service';
+import { UserService } from '../service/user.service';
 import { User } from './user-interface';
 import { Router } from '@angular/router';
-import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { of } from 'rxjs/observable/of';
-import {
-  debounceTime, distinctUntilChanged, switchMap
-} from 'rxjs/operators';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import * as _ from 'lodash';
-
-
-
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
-
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -26,8 +15,6 @@ export class UserComponent implements OnInit {
   users: User[];
   gridViewShow: boolean = false;
   listViewShow: boolean = true;
-  private searchTerms = new Subject<string>();
-  searchTerm: string;
   sortByNameAsc: boolean;
 
   sortByName() {
@@ -73,13 +60,13 @@ export class UserComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((response) => {
       console.log(response);
-      // console.log(this.users);
       if (response) {
-        // console.log(this.users.indexOf(user))
+
         var _thisObj = this;
         this._userservice.deleteUser(user._id).subscribe((users) => {
-          console.log(users)
+
           _thisObj.users.splice((_thisObj.users.indexOf(user)), 1);
+
         }
 
         )
@@ -105,7 +92,7 @@ export class UserComponent implements OnInit {
 
 
 @Component({
-  templateUrl: './delete/deleteuser.component.html',
+  templateUrl: '../delete/deleteuser.component.html',
 })
 export class DeleteUserComponent {
   constructor(public dialogRef: MatDialogRef<DeleteUserComponent>,
@@ -121,7 +108,7 @@ export class DeleteUserComponent {
 
 }
 @Component({
-  templateUrl: './showpopup/showuser.component.html',
+  templateUrl: '../showpopup/showuser.component.html',
 })
 export class ShowUserComponent {
   constructor(public dialogRef: MatDialogRef<ShowUserComponent>,
