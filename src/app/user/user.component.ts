@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
-import { UserService } from './user.service';
-import { User } from './user';
+import { UserService } from './service/user.service';
+import { User } from './user-interface';
 import { Router } from '@angular/router';
 import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
 import { Observable } from 'rxjs/Observable';
@@ -26,7 +26,6 @@ export class UserComponent implements OnInit {
   users: User[];
   gridViewShow: boolean = false;
   listViewShow: boolean = true;
-  // users$: Observable<User[]>;
   private searchTerms = new Subject<string>();
   searchTerm: string;
   sortByNameAsc: boolean;
@@ -78,15 +77,14 @@ export class UserComponent implements OnInit {
       if (response) {
         // console.log(this.users.indexOf(user))
         var _thisObj = this;
-        this._userservice.deleteUser(user._id).subscribe((users)=>
-        {
+        this._userservice.deleteUser(user._id).subscribe((users) => {
           console.log(users)
           _thisObj.users.splice((_thisObj.users.indexOf(user)), 1);
         }
-     
-      )
-        
-      this._toastr.success("Successfully deleted!");
+
+        )
+
+        this._toastr.success("Successfully deleted!");
       }
     })
   }
@@ -111,7 +109,7 @@ export class UserComponent implements OnInit {
 })
 export class DeleteUserComponent {
   constructor(public dialogRef: MatDialogRef<DeleteUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private _userservice: UserService,public router:Router) {
+    @Inject(MAT_DIALOG_DATA) public data: any, private _userservice: UserService, public router: Router) {
 
 
   }
