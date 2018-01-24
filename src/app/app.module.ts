@@ -8,7 +8,7 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatDialogModule, MatGridListModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatDialogModule, MatGridListModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import { AppRouterModule } from './router/app-router.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastOptions } from 'ng2-toastr/src/toast-options';
@@ -33,6 +33,8 @@ import { SearchPipe } from './search/search.pipe';
 		MatDialogModule,
 		BrowserAnimationsModule,
 		MatGridListModule,
+		MatDatepickerModule,
+		MatNativeDateModule,
 		ToastModule.forRoot(),
 
 	],

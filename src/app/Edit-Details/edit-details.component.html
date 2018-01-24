@@ -1,29 +1,46 @@
-<div class="container">
-  <h4 style="color:brown">Edit UserDetails</h4>
-  <br>
-  <button (click)="goBack()" class="btn btn-sm btn-info" data-tooltip title="Go Back">
-    <mat-icon>navigate_before</mat-icon>
-  </button>
-  <br>
-  <br> User ID:
-  <span>{{user._id}}</span>
-  <br>
-
-  <br>
-  <div style="width:500px">
-    <label>Name:</label>
-    <input type="text" [(ngModel)]="user.fullname" class="form-control">
-    <br>
-    <label>Email:</label>
-    <input type="text" [(ngModel)]="user.email" class="form-control">
-    <br>
-
-    <label>Description:</label>
-    <textarea type="text" [(ngModel)]="user.hobbies" class="form-control">{{user.hobbies}}</textarea>
-    <br>
-    <button (click)="onEditSave()" class="btn btn-success pull-right">Save</button>
+<div class="container" style="padding:5%">
+	<h4 style="color:brown">Edit UserDetails</h4>
+	<br>
+	<button (click)="goBack()" class="btn btn-sm btn-info" data-tooltip title="Go Back">
+		<mat-icon>navigate_before</mat-icon>
+	</button>
+	<br>
 
 
-  </div>
+	<br>
+	<div class="form-width">
+		<div>
+			<mat-form-field class="form-width">
+				<input type="text" matInput [(ngModel)]="user.fullname" class="form-control">
+			</mat-form-field>
+		</div>
+		<br>
+		<div>
+			<mat-form-field class="form-width">
+				<input type="text" matInput [(ngModel)]="user.email" class="form-control">
+			</mat-form-field>
+		</div>
+
+		<br>
+		<div>
+			<mat-form-field class="form-width">
+				<textarea type="text" matInput [(ngModel)]="user.hobbies" class="form-control">{{user.hobbies}}</textarea>
+			</mat-form-field>
+
+		</div>
+		<div>
+			<mat-form-field class="form-width">
+				<input matInput [matDatepicker]="picker" class="form-control" [(ngModel)]="user.dateofBirth">
+
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+
+		</div>
+		<br>
+		<button (click)="onEditSave()" class="btn btn-success pull-right">Save</button>
+
+
+	</div>
 
 </div>

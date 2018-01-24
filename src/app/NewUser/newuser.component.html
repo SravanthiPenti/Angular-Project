@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding:5%">
 	<h3 style="color:brown">User Registration</h3>
 	<br>
 	<button data-tooltip title="Go Back" (click)="goBack()" class="btn btn-sm btn-info">
@@ -6,35 +6,53 @@
 	</button>
 	<br>
 	<br>
-	<form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)" style="width:500px">
+	<form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)" class="form-width">
 		<div class="form-group">
-		
+
 			<div>
-				<label>Name:</label>
-				<input type="text" #nameRef="ngModel" ngModel name="fullname" class="form-control" placeholder="name" required>
-				<div *ngIf="nameRef.errors&&(nameRef.dirty||nameRef.touched)">
-					<div [hidden]="!nameRef.errors.required" class="alert alert-danger">
-						plese enter a name
+				<mat-form-field class="form-width">
+					<input matInput type="text" #nameRef="ngModel" ngModel name="fullname" class="form-control" placeholder="name" required>
+					<div *ngIf="nameRef.errors&&(nameRef.dirty||nameRef.touched)">
+						<div [hidden]="!nameRef.errors.required" class="alert alert-danger">
+							plese enter a name
+						</div>
 					</div>
-				</div>
+				</mat-form-field>
 			</div>
 			<div>
-				<label>Email:</label>
-				<input type="text" ngModel #emailRef="ngModel" name="email" class="form-control" placeholder="example@gmail.com" required>
-				<div *ngIf="emailRef.errors&&(emailRef.dirty||emailRef.touched)">
-					<div [hidden]="!emailRef.errors.required" class="alert alert-danger">
-						plese enter a email
+				<mat-form-field class="form-width">
+					<input matInput type="text" ngModel #emailRef="ngModel" name="email" class="form-control" placeholder="example@gmail.com"
+					 required>
+					<div *ngIf="emailRef.errors&&(emailRef.dirty||emailRef.touched)">
+						<div [hidden]="!emailRef.errors.required" class="alert alert-danger">
+							plese enter a email
+						</div>
 					</div>
-				</div>
+				</mat-form-field>
+			</div>
+
+			<div>
+				<mat-form-field class="form-width">
+					<textarea matInput type="text" #descRef="ngModel" ngModel name="hobbies" class="form-control" placeholder="hobbies" required></textarea>
+					<div *ngIf="descRef.errors&&(descRef.dirty||descRef.touched)">
+						<div [hidden]="!descRef.errors.required" class="alert alert-danger">
+							plese enter a description
+						</div>
+					</div>
+				</mat-form-field>
 			</div>
 			<div>
-				<label>Description:</label>
-				<textarea type="text" #descRef="ngModel" ngModel name="hobbies" class="form-control" placeholder="hobbies" required></textarea>
-				<div *ngIf="descRef.errors&&(descRef.dirty||descRef.touched)">
-					<div [hidden]="!descRef.errors.required" class="alert alert-danger">
-						plese enter a description
-					</div>
-				</div>
+				<mat-form-field class="form-width">
+					<input matInput [matDatepicker]="picker" placeholder="Choose a date" name="dateofBirth" class="form-control" ngModel #dateRef="ngModel"
+					 required>
+
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+					<mat-error *ngIf="dateRef.hasError('required')">
+						please enter date
+
+					</mat-error>
+				</mat-form-field>
 			</div>
 			<br>
 			<button class="btn btn-sm btn-success" class="pull-right" mat-raised-button [disabled]="!newuser.valid">Add</button>
