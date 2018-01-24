@@ -85,7 +85,8 @@ export class UserComponent implements OnInit {
         }
      
       )
-        this._toastr.success('<p class="alert alert-success">Successfully deleted!</p>', null, { enableHTML: true });
+        
+      this._toastr.success("Successfully deleted!");
       }
     })
   }
