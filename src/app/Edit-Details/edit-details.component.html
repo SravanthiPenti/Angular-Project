@@ -8,39 +8,27 @@
 
 
 	<br>
-	<div class="form-width">
-		<div>
-			<mat-form-field class="form-width">
-				<input type="text" matInput [(ngModel)]="user.fullname" class="form-control">
-			</mat-form-field>
-		</div>
-		<br>
-		<div>
-			<mat-form-field class="form-width">
-				<input type="text" matInput [(ngModel)]="user.email" class="form-control">
-			</mat-form-field>
-		</div>
 
-		<br>
-		<div>
-			<mat-form-field class="form-width">
-				<textarea type="text" matInput [(ngModel)]="user.hobbies" class="form-control">{{user.hobbies}}</textarea>
-			</mat-form-field>
+<div class="form-width">
+<form >
+	<mat-form-field class="form-width">
+		<input matInput [(ngModel)]="user.fullname" name="fullname" type="text" class="form-control" >
+	</mat-form-field>
 
-		</div>
-		<div>
-			<mat-form-field class="form-width">
-				<input matInput [matDatepicker]="picker" class="form-control" [(ngModel)]="user.dateofBirth">
+	<mat-form-field class="form-width">
+		<input type="text" matInput [(ngModel)]="user.email" name="email" class="form-control">
 
-				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-				<mat-datepicker #picker></mat-datepicker>
-			</mat-form-field>
+	</mat-form-field>
+	<mat-form-field class="form-width">
+		<textarea type="text" matInput [(ngModel)]="user.hobbies" name="hobbies" class="form-control" >{{user.hobbies}}</textarea>
+	</mat-form-field>
+	<mat-form-field class="form-width">
+		<input matInput [matDatepicker]="picker" class="form-control" name="dateofBirth" [(ngModel)]="user.dateofBirth" >
 
-		</div>
-		<br>
-		<button (click)="onEditSave()" class="btn btn-success pull-right">Save</button>
+		<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+		<mat-datepicker #picker></mat-datepicker>
 
-
-	</div>
-
+	</mat-form-field>
+	<button (click)="onEditSave()" class="btn btn-success pull-right" [disabled]="checkChanges()">Save</button>
+</form>
 </div>
