@@ -20,6 +20,7 @@ bodyParser = require('body-parser');
 global.objectID = require('mongodb').ObjectID;
 app.use(bodyParser.json());
 app.use(allowCrossDomain);
+var lowercase=require('lower-case');
 
 global.MongoClient = require('mongodb').MongoClient
 	, assert = require('assert');
@@ -34,7 +35,15 @@ MongoClient.connect(url, function (err, db) {
 
 
 app.post('/adduser', function (req, res) {
-	db.collection('user').insert(req.body, function (error, data) {
+	var insertdata = {
+		fullname: lowercase(req.body.fullname),
+		email: lowercase(req.body.email),
+		hobbies: lowercase(req.body.hobbies),
+		dateofBirth:req.body.dateofBirth,
+		status:true
+		
+	}
+	db.collection('user').insertOne(insertdata, function (error, data) {
 		if (error) {
 			res.send({ status: false });
 		} else {
@@ -71,9 +80,10 @@ app.get('/home/:id', function (req, res) {
 })
 app.put('/home/:id', function (req, res) {
 	var updatedata = {
-		fullname: req.body.fullname,
-		email: req.body.email,
-		hobbies: req.body.hobbies
+		fullname: lowercase(req.body.fullname),
+		email: lowercase(req.body.email),
+		hobbies: lowercase(req.body.hobbies),
+		dateofBirth:req.body.dateofBirth
 	}
 	var id = req.params.id;
 	console.log(id);

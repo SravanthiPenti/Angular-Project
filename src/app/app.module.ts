@@ -13,13 +13,15 @@ import { AppRouterModule } from './router/app-router.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastOptions } from 'ng2-toastr/src/toast-options';
 import { routingComponents } from './router/app-router.module';
-import { SearchPipe } from './search/search.pipe';
+import { SearchPipe } from './pipes/search.pipe';
+import {CapitalizePipe} from './pipes/capitalized.pipe';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		SearchPipe,
-		routingComponents
+		routingComponents,
+		CapitalizePipe
 	],
 	imports: [
 		BrowserModule,

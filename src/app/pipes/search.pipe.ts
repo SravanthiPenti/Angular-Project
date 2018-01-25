@@ -16,7 +16,7 @@ export class SearchPipe implements PipeTransform {
 			console.log(item)
 			console.log(value);
 			console.log(args);
-			return item.fullname.toLowerCase().includes(args);
+			return item.fullname.includes(args);
 
 
 		});
