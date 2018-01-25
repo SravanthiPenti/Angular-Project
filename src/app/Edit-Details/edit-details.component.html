@@ -10,7 +10,7 @@
 	<br>
 
 <div class="form-width">
-<form >
+<form #edituser="ngForm" >
 	<mat-form-field class="form-width">
 		<input matInput [(ngModel)]="user.fullname" name="fullname" type="text" class="form-control" >
 	</mat-form-field>
@@ -23,12 +23,14 @@
 		<textarea type="text" matInput [(ngModel)]="user.hobbies" name="hobbies" class="form-control" >{{user.hobbies}}</textarea>
 	</mat-form-field>
 	<mat-form-field class="form-width">
-		<input matInput [matDatepicker]="picker" class="form-control" name="dateofBirth" [(ngModel)]="user.dateofBirth" >
+		<input matInput [matDatepicker]="picker" class="form-control" [max]="maxDate" #dateRef="ngModel" name="dateofBirth" [(ngModel)]="user.dateofBirth" >
 
 		<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 		<mat-datepicker #picker></mat-datepicker>
+		<mat-error *ngIf="dateRef.hasError('max')"></mat-error>
 
 	</mat-form-field>
-	<button (click)="onEditSave()" class="btn btn-success pull-right" [disabled]="checkChanges()">Save</button>
+	<button (click)="onEditSave()" class="btn btn-primary pull-right" [disabled]="!checkFields() || checkChanges() || !edituser.valid">update</button>
 </form>
 </div>
+

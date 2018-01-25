@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 
 export class NewUserComponent {
-
+	
+maxDate=new Date();
 	constructor(private _userservice: UserService, private router: Router) {
 
 	}

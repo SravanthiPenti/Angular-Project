@@ -22,9 +22,9 @@
 			<div>
 				<mat-form-field class="form-width">
 					<input matInput type="text" ngModel #emailRef="ngModel" name="email" class="form-control" placeholder="example@gmail.com"
-					 required>
+					 required   pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 					<div *ngIf="emailRef.errors&&(emailRef.dirty||emailRef.touched)">
-						<div [hidden]="!emailRef.errors.required" class="alert alert-danger">
+						<div [hidden]="!emailRef.errors.required&&emailRef.errors.pattern" class="alert alert-danger">
 							plese enter a email
 						</div>
 					</div>
@@ -43,12 +43,12 @@
 			</div>
 			<div>
 				<mat-form-field class="form-width">
-					<input matInput [matDatepicker]="picker" placeholder="Choose a date" name="dateofBirth" class="form-control" ngModel #dateRef="ngModel"
+					<input matInput [matDatepicker]="picker" placeholder="Choose a date" [max]="maxDate"  name="dateofBirth" class="form-control" ngModel #dateRef="ngModel"
 					 required>
 
 					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 					<mat-datepicker #picker></mat-datepicker>
-					<mat-error *ngIf="dateRef.hasError('required')">
+					<mat-error *ngIf="dateRef.hasError('required')&&dateRef.hasError('max')">
 						please enter date
 
 					</mat-error>
