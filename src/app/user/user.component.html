@@ -36,9 +36,9 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let user of users |  LockFilter: query">
-					<td (click)="showUser(user)">{{user.fullname}}</td>
+					<td (click)="showUser(user)">{{user.fullname | capitalize}}</td>
 					<td (click)="showUser(user)">{{user.email}}</td>
-					<td (click)="showUser(user)">{{user.dateofBirth}}</td>
+					<td (click)="showUser(user)">{{user.dateofBirth | date:mediumDate}}</td>
 					<td>
 						<a routerLink="/home/{{user._id}}" style="text-decoration:none">
 							<button class="btn btn-sm btn-default">
@@ -69,7 +69,7 @@
 
 					<br>
 					<br>
-					<p (click)="showUser(user)">{{user.fullname}}</p>
+					<p (click)="showUser(user)">{{user.fullname | capitalize}}</p>
 				</div>
 			</div>
 		</div>
