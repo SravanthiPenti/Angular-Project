@@ -16,6 +16,7 @@ import { routingComponents } from './router/app-router.module';
 import { SearchPipe } from './pipes/search.pipe';
 import {CapitalizePipe} from './pipes/capitalized.pipe';
 
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -37,6 +38,7 @@ import {CapitalizePipe} from './pipes/capitalized.pipe';
 		MatGridListModule,
 		MatDatepickerModule,
 		MatNativeDateModule,
+		
 		ToastModule.forRoot(),
 
 	],

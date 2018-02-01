@@ -32,14 +32,16 @@ MongoClient.connect(url, function (err, db) {
 	console.log("Connected correctly to server");
 	global.db = db.db("mongoNode");
 });
+const api = require("./server/api/api");
 
-
+app.use("/",api);
 app.post('/adduser', function (req, res) {
 	var insertdata = {
 		fullname: lowercase(req.body.fullname),
 		email: lowercase(req.body.email),
 		hobbies: lowercase(req.body.hobbies),
 		dateofBirth:req.body.dateofBirth,
+		file:req.body.file,
 		status:true
 		
 	}

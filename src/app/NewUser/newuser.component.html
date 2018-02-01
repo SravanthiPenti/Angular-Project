@@ -41,6 +41,16 @@
 					</div>
 				</mat-form-field>
 			</div>
+			<!-- <div>
+				<mat-form-field>
+					<input type="file" name="file" class="form-control" placeholder="uploading files" required>
+					<div *ngIf="fileRef.errors&&(fileRef.dirty||fileRef.touched)">
+						<div [hidden]="!descRef.errors.required" class="alert alert-danger">
+							plese enter a description
+						</div>
+						</div>
+				</mat-form-field>
+			</div> -->
 			<div>
 				<mat-form-field class="form-width">
 					<input matInput [matDatepicker]="picker" placeholder="Choose a date" [max]="maxDate"  name="dateofBirth" class="form-control" ngModel #dateRef="ngModel"
@@ -48,13 +58,17 @@
 
 					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 					<mat-datepicker #picker></mat-datepicker>
-					<mat-error *ngIf="dateRef.hasError('required')&&dateRef.hasError('max')">
+					<mat-error *ngIf="dateRef.hasError('required') && dateRef.hasError('max')">
 						please enter date
 
 					</mat-error>
 				</mat-form-field>
 			</div>
+			<div>
+				<input type="file" name="file" class="form-control" placeholder="FileUpload" #fileRef="ngModel" accepts=".png" ngModel>
+			</div>
 			<br>
+	
 			<button class="btn btn-sm btn-success" class="pull-right" mat-raised-button [disabled]="!newuser.valid">Add</button>
 
 		</div>
