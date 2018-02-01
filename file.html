@@ -1,0 +1,23 @@
+<!-- <html>
+   <head>
+      <title>File Uploading Form</title>
+   </head>
+
+   <body>
+      <h3>File Upload:</h3>
+      Select a file to upload: <br />
+      
+      <form action="http://127.0.0.1:4400/file_upload" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type="file" name="file" size="50" />
+         <br />
+         <input type = "submit" value = "Upload File" />
+      </form>
+      
+   </body>
+</html> -->
+<form method="post" enctype="multipart/form-data" action="/upload">
+    <input type="hidden" name="msgtype" value="2"/>
+    <input type="file" name="images" />
+    <input type="submit" value="Upload" />
+</form>

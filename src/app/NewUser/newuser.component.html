@@ -6,7 +6,7 @@
 	</button>
 	<br>
 	<br>
-	<form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)" class="form-width">
+	<form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)" class="form-width" enctype="multipart/form-data">
 		<div class="form-group">
 
 			<div>
@@ -65,8 +65,9 @@
 				</mat-form-field>
 			</div>
 			<div>
-				<input type="file" name="file" class="form-control" placeholder="FileUpload" #fileRef="ngModel" accepts=".png" ngModel>
+				<input type="file" name="image" class="form-control" placeholder="FileUpload" #fileRef="ngModel" ngModel>
 			</div>
+	
 			<br>
 	
 			<button class="btn btn-sm btn-success" class="pull-right" mat-raised-button [disabled]="!newuser.valid">Add</button>

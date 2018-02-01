@@ -16,10 +16,13 @@ var allowCrossDomain = function (req, res, next) {
 global.express = require('express')
 global.app = express()
 bodyParser = require('body-parser');
-
+var multer=require("multer");
+var fs=require('fs');
 global.objectID = require('mongodb').ObjectID;
 app.use(bodyParser.json());
 app.use(allowCrossDomain);
+
+
 var lowercase=require('lower-case');
 
 global.MongoClient = require('mongodb').MongoClient
@@ -27,21 +30,23 @@ global.MongoClient = require('mongodb').MongoClient
 // Connection URL using npm mongo n
 global.url = 'mongodb://localhost:27017/';
 // Use connect method to connect to the Server
+// global.upload=multer({dest:'public/'});
 MongoClient.connect(url, function (err, db) {
+
 	assert.equal(null, err);
 	console.log("Connected correctly to server");
 	global.db = db.db("mongoNode");
 });
-const api = require("./server/api/api");
 
-app.use("/",api);
-app.post('/adduser', function (req, res) {
+
+
+app.post('/adduser',upload.any(), function (req, res) {
 	var insertdata = {
 		fullname: lowercase(req.body.fullname),
 		email: lowercase(req.body.email),
 		hobbies: lowercase(req.body.hobbies),
 		dateofBirth:req.body.dateofBirth,
-		file:req.body.file,
+		file:req.files.file.path,
 		status:true
 		
 	}

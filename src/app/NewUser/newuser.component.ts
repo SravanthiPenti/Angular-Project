@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { User } from '../user/user-interface';
 import { Router } from '@angular/router';
-
 @Component({
 
 	templateUrl: './newuser.component.html',
