@@ -16,14 +16,17 @@ var allowCrossDomain = function (req, res, next) {
 global.express = require('express')
 global.app = express()
 bodyParser = require('body-parser');
-var multer=require("multer");
 var fs=require('fs');
+var path=require("path");
 global.objectID = require('mongodb').ObjectID;
 app.use(bodyParser.json());
 app.use(allowCrossDomain);
-
+var multipart=require("connect-multiparty");
 
 var lowercase=require('lower-case');
+app.use(multipart({
+	uploadDir:path.join(__dirname,'./public')
+}));
 
 global.MongoClient = require('mongodb').MongoClient
 	, assert = require('assert');
@@ -40,16 +43,19 @@ MongoClient.connect(url, function (err, db) {
 
 
 
-app.post('/adduser',upload.any(), function (req, res) {
-	var insertdata = {
+app.post('/adduser', function (req, res) {
+
+	console.log(req.files);
+	insertdata = {
 		fullname: lowercase(req.body.fullname),
 		email: lowercase(req.body.email),
 		hobbies: lowercase(req.body.hobbies),
 		dateofBirth:req.body.dateofBirth,
-		file:req.files.file.path,
+			["images"]:req.files,
 		status:true
 		
 	}
+
 	db.collection('user').insertOne(insertdata, function (error, data) {
 		if (error) {
 			res.send({ status: false });
@@ -69,12 +75,12 @@ app.get('/getUser', function (req, res) {
 			res.send(result)
 		}
 
-		console.log(res);
+		// console.log(res);
 	})
 })
 app.get('/home/:id', function (req, res) {
 	var id = req.param('id');
-	console.log(id);
+	// console.log(id);
 	db.collection('user').findOne({ '_id': objectID(id) }, function (err, result) {
 		if (err) {
 			res.send({ status: false });
@@ -93,7 +99,7 @@ app.put('/home/:id', function (req, res) {
 		dateofBirth:req.body.dateofBirth
 	}
 	var id = req.params.id;
-	console.log(id);
+	// console.log(id);
 	db.collection('user').updateOne({ '_id': objectID(id) }, { $set: updatedata }, {}, function (err, result) {
 		if (err) {
 			res.send({ status: false });

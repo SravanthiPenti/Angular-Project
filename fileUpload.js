@@ -19,17 +19,18 @@ app.get('/', function(req, res) {
 app.post('/upload',function(req,res){
 var  data={};
 console.log(req.files)
+console.log(req.files.images.path);
 data['images']=req.files;
        db.collection('myimages')
            .insert(data, function(err, result){
                if (err) { console.log(err); }
            });
 })
-app.get('/getFile',function(req,res){
-    db.collection('myimages').findOne( {"_id":ObjectId("5a731ad5c02f13331dda15cc")},function(err,result){
-        res.send(result);
-    })
+// app.get('/getFile',function(req,res){
+//     db.collection('myimages').findOne( {"_id":ObjectId("5a731ad5c02f13331dda15cc")},function(err,result){
+//         res.send(result);
+//     })
     
-})
-app.listen(5500);
+// })
+app.listen(5000);
     
