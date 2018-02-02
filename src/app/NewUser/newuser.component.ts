@@ -8,21 +8,25 @@ import { Router } from '@angular/router';
 })
 
 export class NewUserComponent {
-	
-maxDate=new Date();
+	file: FileList;
+	maxDate = new Date();
 	constructor(private _userservice: UserService, private router: Router) {
 
 	}
 	user: User[];
 
 	onSubmit(newuser: User) {
+		newuser.image = this.file;
+		console.log("sa", newuser);
 		this._userservice.addUser(newuser).subscribe((user) => {
 			// this.user.push(user)
 			this.router.navigate(['/home']);
-		}, function(error){
+		}, function (error) {
 			console.log(error);
 		})
-
+	}
+	getFile(event) {
+		this.file = event.target.files[0];
 	}
 	goBack() {
 		this.router.navigate(['/home']);

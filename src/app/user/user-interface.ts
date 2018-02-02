@@ -4,5 +4,5 @@ export interface User {
 	email: string;
 	hobbies:string;
 	dateofBirth:string;
-
+	image: FileList;
 }

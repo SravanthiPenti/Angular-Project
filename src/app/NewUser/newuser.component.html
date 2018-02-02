@@ -6,7 +6,7 @@
 	</button>
 	<br>
 	<br>
-	<form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)" class="form-width" enctype="multipart/form-data">
+	<form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)" class="form-width">
 		<div class="form-group">
 
 			<div>
@@ -65,7 +65,7 @@
 				</mat-form-field>
 			</div>
 			<div>
-				<input type="file" name="image" class="form-control" placeholder="FileUpload" #fileRef="ngModel" ngModel>
+				<input type="file" name="image" class="form-control" placeholder="FileUpload" ngModel (click)="getFile($event)">
 			</div>
 	
 			<br>
