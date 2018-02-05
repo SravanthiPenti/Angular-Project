@@ -80,6 +80,7 @@ export class UserComponent implements OnInit {
     this.router.navigate(['/addUser']);
   }
   showUser(user: User) {
+    console.log("UserDetails",user);
     let dialogRef = this.dialog.open(ShowUserComponent, {
       width: '500px',
       data: user

@@ -29,7 +29,7 @@ export class NewUserComponent {
 
 
 	onSubmit(newuser: User) {
-		newuser.image=this.file;
+		newuser.file=this.file;
 		console.log("sa", newuser);
 		this._userservice.addUser(newuser).subscribe((user) => {
 			// this.user.push(user)

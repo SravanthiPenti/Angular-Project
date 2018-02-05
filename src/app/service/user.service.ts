@@ -23,7 +23,6 @@ export class UserService {
 	}
 	addUser(user): Observable<any> {
 		user.status = true
-		
 		return this.http
 			.post('http://127.0.0.1:3000/adduser', user).map(response => response);
 	}

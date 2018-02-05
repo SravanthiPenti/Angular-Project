@@ -6,7 +6,7 @@
 	</button>
 	<br>
 	<br>
-	<form #newuser="ngForm" (ngSubmit)="onSubmit(newuser.value)" class="form-width">
+	<form #newuser="ngForm" class="form-width">
 		<div class="form-group">
 
 			<div>
@@ -22,7 +22,7 @@
 			<div>
 				<mat-form-field class="form-width">
 					<input matInput type="text" ngModel #emailRef="ngModel" name="email" class="form-control" placeholder="example@gmail.com"
-					 required   pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+					 required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 					<div *ngIf="emailRef.errors&&(emailRef.dirty||emailRef.touched)">
 						<div [hidden]="!emailRef.errors.required&&emailRef.errors.pattern" class="alert alert-danger">
 							plese enter a email
@@ -53,8 +53,8 @@
 			</div> -->
 			<div>
 				<mat-form-field class="form-width">
-					<input matInput [matDatepicker]="picker" placeholder="Choose a date" [max]="maxDate"  name="dateofBirth" class="form-control" ngModel #dateRef="ngModel"
-					 required>
+					<input matInput [matDatepicker]="picker" placeholder="Choose a date" [max]="maxDate" name="dateofBirth" class="form-control"
+					 ngModel #dateRef="ngModel" required>
 
 					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 					<mat-datepicker #picker></mat-datepicker>
@@ -65,15 +65,14 @@
 				</mat-form-field>
 			</div>
 			<div>
-				<input type="file" name="image" class="form-control" placeholder="FileUpload" ngModel (change)="getFile($event)">
+				<input type="file" name="file" class="form-control" placeholder="FileUpload" ngModel (change)="getFile($event)">
 				<button class="btn btn-sm btn-success" (click)="upload()">Upload</button>
 			</div>
 			<br>
-	
-			<button class="btn btn-sm btn-success" class="pull-right" mat-raised-button [disabled]="!newuser.valid">Add</button>
+
+			<button class="btn btn-sm btn-success" class="pull-right" (click)="onSubmit(newuser.value)"  mat-raised-button [disabled]="!newuser.valid || uploadFile">Add</button>
 
 		</div>
 	</form>
+
 </div>
-
-
