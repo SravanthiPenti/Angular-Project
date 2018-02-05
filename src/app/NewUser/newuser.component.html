@@ -65,9 +65,9 @@
 				</mat-form-field>
 			</div>
 			<div>
-				<input type="file" name="image" class="form-control" placeholder="FileUpload" ngModel (click)="getFile($event)">
+				<input type="file" name="image" class="form-control" placeholder="FileUpload" ngModel (change)="getFile($event)">
+				<button class="btn btn-sm btn-success" (click)="upload()">Upload</button>
 			</div>
-	
 			<br>
 	
 			<button class="btn btn-sm btn-success" class="pull-right" mat-raised-button [disabled]="!newuser.valid">Add</button>
@@ -75,3 +75,5 @@
 		</div>
 	</form>
 </div>
+
+

@@ -9,14 +9,27 @@ import { Router } from '@angular/router';
 
 export class NewUserComponent {
 	file: FileList;
+	uploadFile:boolean=true;
 	maxDate = new Date();
 	constructor(private _userservice: UserService, private router: Router) {
 
 	}
 	user: User[];
+	getFile(event) {
+		this.file = event.target.files[0];
+	}
+	upload(){
+		this._userservice.upload(this.file).subscribe((response) => {
+			console.log(response)
+		}, function (error) {
+			console.log(error);
+		});
+		this.uploadFile=false;
+	}
+
 
 	onSubmit(newuser: User) {
-		newuser.image = this.file;
+		newuser.image=this.file;
 		console.log("sa", newuser);
 		this._userservice.addUser(newuser).subscribe((user) => {
 			// this.user.push(user)
@@ -24,9 +37,6 @@ export class NewUserComponent {
 		}, function (error) {
 			console.log(error);
 		})
-	}
-	getFile(event) {
-		this.file = event.target.files[0];
 	}
 	goBack() {
 		this.router.navigate(['/home']);
