@@ -13,9 +13,12 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class UserComponent implements OnInit {
   deleteUser: boolean = false;
   users: User[];
+  report:any[];
   gridViewShow: boolean = false;
   listViewShow: boolean = true;
   sortByNameAsc: boolean;
+  tempature:boolean=false;
+  weatherKeys:any[];
 
   sortByName() {
     if (this.sortByNameAsc) {
@@ -48,6 +51,13 @@ export class UserComponent implements OnInit {
   getUsers() {
     var thisObj = this;
     this._userservice.getUsers().subscribe((users) => thisObj.users = users);
+  }
+  weather(){
+    this._userservice.getWeather().subscribe((weather)=>{
+      this.tempature=true;
+      this.report=weather;
+      this.weatherKeys = _.keys(weather)
+    });
   }
 
 

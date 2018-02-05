@@ -12,6 +12,14 @@
 		<button data-tooltip title="List View" class="btn btn-sm btn-info" (click)="ListView()">
 			<i class="fa fa-bars"></i>
 		</button>
+		<button class="btn btn-sm btn-success" (click)="weather()">Weather Report</button>
+		<div *ngIf="tempature">
+				<ul>
+						<li *ngFor="let key of weatherKeys">
+							{{key + ":" +report[key]}}
+						</li>
+					</ul>
+		</div>
 		<button class="btn btn-sm btn-primary pull-right" (click)="newUser()">
 			<i class="fa fa-plus"></i>&nbsp;Add User</button>
 		<br>

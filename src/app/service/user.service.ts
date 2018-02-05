@@ -38,5 +38,9 @@ export class UserService {
 		return this.http.delete('http://127.0.0.1:3000/deleteUser/' + id)
 			.map(response => response);
 	}
+	getWeather():Observable<any>
+	{
+		return this.http.get('http://127.0.0.1:3000/check').map(response=>response);
+	}
 
 }
