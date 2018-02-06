@@ -10,7 +10,26 @@ function getListOfCommits(){
     })
   });
 }
+function getListOfRepos(){
+  return new Promise(function(resolve,reject){
+    var url="https://api.github.com/users/Sravanthipenti/repos?per_page=100";
+    axios.get(url,{json:true}).then(function(response){
+      console.log(response.data);
+      
+      for(var i=0;i<=response.data.length;i++)
+      {
+      console.log("Repository Name:",response.data[i].name);
+      console.log("Respository FullName:",response.data[i].full_name);
+      console.log("-----------");
+      }
+      resolve(response.data);
+    },function(error){
+      reject(error);
+    });
+  });
+}
 
 module.exports = {
-  getListOfCommits
+  getListOfCommits,
+  getListOfRepos
 }
