@@ -12,19 +12,19 @@ export class UserService {
 
 	}
 	getUsers(): Observable<any> {
-		return this.http.get('http://127.0.0.1:3000/getUser').map(response => response);
+		return this.http.get('http://127.0.0.1:3000/user/getuser').map(response => response);
 	}
 	userId(id: any): Observable<any> {
-		return this.http.get('http://127.0.0.1:3000/home/' + id).map(response => response);
+		return this.http.get('http://127.0.0.1:3000/user/home/' + id).map(response => response);
 	}
 	update(id, user): Observable<any> {
 
-		return this.http.put('http://127.0.0.1:3000/home/' + id, user).map(response => response);
+		return this.http.put('http://127.0.0.1:3000/user/update/' + id, user).map(response => response);
 	}
 	addUser(user): Observable<any> {
 		user.status = true
 		return this.http
-			.post('http://127.0.0.1:3000/adduser', user).map(response => response);
+			.post('http://127.0.0.1:3000/user/adduser', user).map(response => response);
 	}
 	upload(file): Observable<any> {
 		const headers = new Headers({});
@@ -35,12 +35,12 @@ export class UserService {
 			.post('http://127.0.0.1:3000/upload', formData, options).map(response => response);
 	}
 	deleteUser(id): Observable<any> {
-		return this.http.delete('http://127.0.0.1:3000/deleteUser/' + id)
+		return this.http.delete('http://127.0.0.1:3000/user/deleteUser/' + id)
 			.map(response => response);
 	}
 	getWeather():Observable<any>
 	{
-		return this.http.get('http://127.0.0.1:3000/check').map(response=>response);
+		return this.http.get('http://127.0.0.1:3000/weather/getWeather').map(response=>response);
 	}
 
 }
